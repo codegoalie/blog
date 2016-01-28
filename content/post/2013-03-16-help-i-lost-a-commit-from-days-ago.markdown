@@ -31,7 +31,7 @@ anew on a different site.
 
 Anyway, here's where I was at before the recovery:
 
-{% gist 4738855 lost_commit.sh %}
+{{< gist 4738855 "lost_commit.sh" >}}
 
 Well...now what? Redo all that work in the lost commit. Nah. Reflog to the rescue! Git's <a href="http://www.kernel.org/pub/software/scm/git/docs/git-reflog.html">reflog</a> is a (by default) 90 day record of everywhere your HEAD ref was pointing. Anytime you do a checkout, create branch, commit, rebase; anytime the 'current' commit of your working directory changes, the reflog gets a new entry. You can think of the reflog as a record of what you've been doing. If you've had it in your working directory in the past 30 days, it's in the reflog.
 
@@ -43,7 +43,7 @@ What's that? I didn't tell you the commit message for the lost commit? Well, I d
 
 Gotcha again! We can still find it. We can use the ancient art of looking for what we lost. It's easy. Simply do a <code>git reflog</code> and you will see a list of everywhere you've been:
 
-{% gist 4738855 reflog.sh %}
+{{< gist 4738855 "reflog.sh" >}}
 
 AHA! Not only did you find the <code>LOST COMMIT!!!</code>, but we can also look at what happened too. Apparently, on a mad dash to get the feature merged before going out and getting my drink on with some chaps, I accidentally rebased my commit right out of the project. Damnit.
 
@@ -55,7 +55,7 @@ In the reflog, there are two ways to reference the commit: the SHA1 and the <cod
 
 `lg` that again and see how we look:
 
-{% gist 4738855 all_fixed.sh %}
+{{< gist 4738855 "all_fixed.sh" >}}
 
 Nice! Now, notice that the SHA1 changed from what you copied out of the reflog. Remember, commit SHA1s are based on their content (files, dirs, commit messages and meta data) AND their parent(s). So, if you change the parent of the commit, you change the commit (Same reason all the SHA1s change when you rebase). In reality, the commit you cherry-picked is duplicated on to the branch you cherry-pick it into. However, in our case that's exactly what we wanted, because I messed up and deleted the commit in the first place.
 

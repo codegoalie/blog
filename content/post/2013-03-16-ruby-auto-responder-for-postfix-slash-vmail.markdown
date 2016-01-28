@@ -37,6 +37,7 @@ and lastly, using the FileUtils module to 'touch' a file:
 <pre lang="ruby">FileUtils.touch "#{file_path}/#{file_name}"</pre>
 
 Here's the full source:
-{% gist 827900 %}
+
+{{< gist 827900 >}}
 
 -- Chris
