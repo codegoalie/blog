@@ -1,9 +1,11 @@
-+++
-date = "2014-08-25T22:17:31-05:00"
-draft = true
-title = "Useful command line expansions"
+---
+date: 2014-08-25
+draft: true
+title: "Useful command line expansions"
+categories: 
+  - Command-Line
 
-+++
+---
 
 Here's a quick trick I've been using for a while, but have found that not many
 others know about it. It's a way to grab the arguments from the last command you
