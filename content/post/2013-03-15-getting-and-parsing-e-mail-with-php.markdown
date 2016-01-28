@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Getting and Parsing E-mail with PHP"
-date: 2009-12-18
+categories:
+- HowTo
 comments: true
-categories: 
-  - HowTo
+date: 2009-12-18
+layout: post
+title: Getting and Parsing E-mail with PHP
 ---
 
 Here's my Problem:

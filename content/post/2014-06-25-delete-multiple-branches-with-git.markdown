@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "Delete multiple branches with git"
-date: 2014-06-25
+categories:
+- git
+- Self-Reference
 comments: true
-categories: 
-  - git
-  - Self-Reference
+date: 2014-06-25
+layout: post
+title: Delete multiple branches with git
 ---
 
 When working on projects with multiple developers following a feature branching

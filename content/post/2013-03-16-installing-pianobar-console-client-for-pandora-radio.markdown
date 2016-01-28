@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "Installing PianoBar - Console client for Pandora Radio"
-date: 2010-01-26
-comments: true
 categories:
-  - HowTo
-  - Self-Reference
+- HowTo
+- Self-Reference
+comments: true
+date: 2010-01-26
+layout: post
+title: Installing PianoBar - Console client for Pandora Radio
 ---
 
 PianoBar is a console client for Pandora Internet Radio. For me, this

@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Android Development: first impressions"
-date: 2013-11-08
+categories:
+- Android
 comments: true
-categories: 
-  - Android
+date: 2013-11-08
+layout: post
+title: 'Android Development: first impressions'
 ---
 
 As a web application developer working in a company full of mobile app

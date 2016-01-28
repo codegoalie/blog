@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "Keep ssh sessions from timing out"
-date: 2010-05-20
+categories:
+- HowTo
+- Self-Reference
 comments: true
-categories: 
-  - HowTo
-  - Self-Reference
+date: 2010-05-20
+layout: post
+title: Keep ssh sessions from timing out
 ---
 
 The [Ubuntu Blog]('http://embraceubuntu.com') has a nice lil' article

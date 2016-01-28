@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Go Concurrency by Example"
-date: 2014-06-14
+categories:
+- golang
 comments: true
-categories: 
-  - golang
+date: 2014-06-14
+layout: post
+title: Go Concurrency by Example
 ---
 
 Recently I've been dabling in Go. I was lured in by the lore of a purposefully

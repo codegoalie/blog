@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "Ruby Auto-Responder for Postfix/Vmail"
-date: 2011-02-15
+categories:
+- HowTo
+- Self-Reference
 comments: true
-categories: 
-  - HowTo
-  - Self-Reference
+date: 2011-02-15
+layout: post
+title: Ruby Auto-Responder for Postfix/Vmail
 ---
 
 Not knowing perl, I set out to write my own script in Ruby to send auto-responses from e-mail addresses setup in a vmail folder structure. You don't need to use postfix, just have the 'new' folder where new messages are stored.

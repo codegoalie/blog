@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "SuperBowl Commercial Bingo Card Generator"
-date: 2012-02-05
+categories:
+- My Stuff
+- Ruby
 comments: true
-categories: 
-  - My Stuff
-  - Ruby
+date: 2012-02-05
+layout: post
+title: SuperBowl Commercial Bingo Card Generator
 ---
 
 Everybody loves the SuperBowl commercials! Last year, I hacked up a script to randomly generate items to create your own bingo cards. This year, I improved the script to actually generate the cards as a PDF file based on an excel sheet of bingo items.

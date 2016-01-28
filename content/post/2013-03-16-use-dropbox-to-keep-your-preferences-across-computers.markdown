@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Use Dropbox to keep your preferences across Computers"
-date: 2010-06-25
+categories:
+- HowTo
 comments: true
-categories: 
-  - HowTo
+date: 2010-06-25
+layout: post
+title: Use Dropbox to keep your preferences across Computers
 ---
 
 Sometimes it can be kind of painful to discover a cool new setting or mode for on of your favorite programs. For instance, I use <a href='www.floodgap.com/software/ttytter/'>TTYtter</a>, a terminal based Twitter client. A few weeks into using it, I discovered it had ReadLine support for tab auto-completion of @usernames, in-line editing of posts and command history (up key). Awesome right? I know. Except, now I need to change my .ttytterrc file on my laptop, home computer, work computer, everywhere. Also, how do I get it there? USB drive, e-mail to myself, browse the network, etc. Being geeks, we don't want to go through all that. 

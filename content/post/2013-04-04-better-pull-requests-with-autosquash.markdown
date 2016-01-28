@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "Better pull requests with git --autosquash"
-date: 2013-04-04
+categories:
+- git
+- Pull Requests
 comments: true
-categories: 
-  - git
-  - Pull Requests
+date: 2013-04-04
+layout: post
+title: Better pull requests with git --autosquash
 ---
 
 **UPDATE (Jun 7, 2013):** I created an [ascii.io video demo of

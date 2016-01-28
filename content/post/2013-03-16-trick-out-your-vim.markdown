@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Trick out your Vim"
-date: 2010-06-25
+categories:
+- HowTo
 comments: true
-categories: 
-  - HowTo
+date: 2010-06-25
+layout: post
+title: Trick out your Vim
 ---
 
 Today, I'm going to add some plugins and scripts to make better use of Vim. I have not started this project and I will be updating this post throughout the day with my finds and experiences.

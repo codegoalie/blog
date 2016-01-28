@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Oh my! What large hot fixes you have."
-date: 2013-02-26
+categories:
+- git
 comments: true
-categories: 
-  - git
+date: 2013-02-26
+layout: post
+title: Oh my! What large hot fixes you have.
 ---
 
 We've all been there: just finished a nice new feature, deployed it out

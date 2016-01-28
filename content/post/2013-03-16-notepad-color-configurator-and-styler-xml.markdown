@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "Notepad++ Color Configurator and styler.xml"
-date: 2010-01-08
+categories:
+- HowTo
+- Self-Reference
 comments: true
-categories: 
-  - HowTo
-  - Self-Reference
+date: 2010-01-08
+layout: post
+title: Notepad++ Color Configurator and styler.xml
 ---
 
 Before I start talking about colors, let's talk font.

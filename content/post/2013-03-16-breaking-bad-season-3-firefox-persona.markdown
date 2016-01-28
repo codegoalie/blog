@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Breaking Bad Season 3 Firefox Persona"
-date: 2010-03-19
+categories:
+- My Stuff
 comments: true
-categories: 
-  - My Stuff
+date: 2010-03-19
+layout: post
+title: Breaking Bad Season 3 Firefox Persona
 ---
 
 <ins datetime="2010-03-24T21:06:42+00:00" style='text-align:center;'><h3>Update: HURRAY!!! It was approved!! Get it now at <BR><a href='http://www.getpersonas.com/en-US/persona/140288'>http://www.getpersonas.com/en-US/persona/140288</a></h3></ins>

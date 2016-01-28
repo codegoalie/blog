@@ -1,11 +1,12 @@
 ---
-layout: post
-title: "Zeus gem error: \"panic: runtime error: invalid memory address or nil pointer dereference\""
-date: 2013-02-12
+categories:
+- HowTo
+- Self-Reference
 comments: true
-categories: 
-  - HowTo
-  - Self-Reference
+date: 2013-02-12
+layout: post
+title: 'Zeus gem error: "panic: runtime error: invalid memory address or nil pointer
+  dereference"'
 ---
 
 I was getting this error and the <a href="https://github.com/burke/zeus">excellent Zeus rails environment loader gem</a> was crashing making it a huge bummer to dev. 

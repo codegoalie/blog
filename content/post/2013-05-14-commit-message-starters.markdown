@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Commit Message Starters"
-date: 2013-05-14
+categories:
+- git
 comments: true
-categories: 
-  - git
+date: 2013-05-14
+layout: post
+title: Commit Message Starters
 ---
 
 As I've been working in git and crafting my commits with rebase

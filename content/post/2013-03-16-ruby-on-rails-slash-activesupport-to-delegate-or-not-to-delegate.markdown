@@ -1,12 +1,12 @@
 ---
-layout: post
-title: "Ruby on Rails/ActiveSupport: To delegate or not to delegate"
-date: 2011-08-12
+categories:
+- HowTo
+- Ruby On Rails
+- Self-Reference
 comments: true
-categories: 
-  - HowTo
-  - Ruby On Rails
-  - Self-Reference
+date: 2011-08-12
+layout: post
+title: 'Ruby on Rails/ActiveSupport: To delegate or not to delegate'
 ---
 
 This is an account of my adventure with delegation from problem to apparent solution to bug in ActiveSupport to you're doing it wrong! 

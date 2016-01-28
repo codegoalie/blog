@@ -1,11 +1,11 @@
 ---
-layout: post
-title: "Help! I lost a commit from days ago!!!"
-date: 2013-02-08
-comments: true
 categories:
-  - git
-  - HowTo
+- git
+- HowTo
+comments: true
+date: 2013-02-08
+layout: post
+title: Help! I lost a commit from days ago!!!
 ---
 
 Oh no! I'm screwed! Better try to remember what work I did and recreate

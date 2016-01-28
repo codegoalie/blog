@@ -1,10 +1,10 @@
 ---
-layout: post
-title: "Useful command line expansions"
-date: 2014-08-25
+categories:
+- Command-Line
 comments: true
-categories: 
-  - Command-Line
+date: 2014-08-25
+layout: post
+title: Useful command line expansions
 ---
 
 Here's a quick trick I've been using for a while, but have found that not many
