@@ -1,0 +1,13 @@
+{{ partial "header.html" . }}
+
+<section class="section">
+<div class="heading">
+<h1 class="title is-2">{{ .Title }} Archive</h1>
+</div>
+
+{{ range where .Data.Pages "Section" "post" }}
+  {{ partial "post_summary.html" . }}
+{{ end }}
+</section>
+
+{{ partial "footer.html" . }}
