@@ -9,7 +9,7 @@
         </h1>
       <h2 class="subtitle">{{ .Date.Format "January 2, 2006" }}</h2>
     </div>
-      <p>
+      <p class="categories">
         {{ range .Params.categories }}
           <a href="{{ $baseUrl }}/categories/{{ lower . | urlize }}/index.html" rel="category">{{ . }}</a>
         {{ end }}

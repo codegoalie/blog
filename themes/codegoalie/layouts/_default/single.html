@@ -15,7 +15,7 @@
 <div class="columns">
   <div class="column is-10">
     <div class="content">
-      <p>
+      <p class="categories">
         {{ range .Params.categories }}
           <a href="{{ $baseUrl }}/categories/{{ lower . | urlize }}/index.html" rel="category">{{ . }}</a>
         {{ end }}
