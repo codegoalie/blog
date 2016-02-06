@@ -4,4 +4,4 @@ title: CodeGoalie
 canonifyurls: true
 permalinks:
   post: /:year/:month/:day/:title
-theme: twentyfourteen
+theme: codegoalie

@@ -1,0 +1,14 @@
+{{ if isset .Data "Pages" }}
+<div class="heading">
+  <h1 class="title is-4">Recent Posts</h1>  
+</div>
+<div class="content">
+<ul>
+{{ range first 5 (where .Data.Pages "Section" "post") }}
+  <li>
+    <a href="{{ .Permalink }}/index.html">{{ .Title }}</a>
+  </li>
+{{ end }}
+</ul>
+</div>
+{{ end }}

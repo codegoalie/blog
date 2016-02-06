@@ -26,6 +26,8 @@ so I won't go into getting started details here. This post is meant to explain
 some of the stickier points that I had to pickup the hard way. I hope to save
 you one or two headaches.
 
+<!-- more -->
+
 ## Docker 102
 
 Just Google "Docker getting started" and you'll be inundated with step by step

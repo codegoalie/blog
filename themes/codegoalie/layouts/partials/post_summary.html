@@ -1,0 +1,19 @@
+{{ $baseUrl := .Site.BaseURL }}
+<section class="section">
+  <div class="container">
+    <div class="heading">
+        <h1 class="title">
+      <a href="{{ .Permalink }}/index.html" rel="bookmark">
+          {{ .Title }}
+      </a>
+        </h1>
+      <h2 class="subtitle">{{ .Date.Format "January 2, 2006" }}</h2>
+    </div>
+      <p>
+        {{ range .Params.categories }}
+          <a href="{{ $baseUrl }}/categories/{{ lower . | urlize }}/index.html" rel="category">{{ . }}</a>
+        {{ end }}
+      </p>
+      <p>{{ .Summary }}</p>
+  </div>
+</section>

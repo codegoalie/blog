@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="{{ with .Site.LanguageCode}}{{ . }}{{ else }}en-US{{end}}">
+<head>
+  <base href="{{ .Site.BaseURL }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  {{ .Hugo.Generator }}
+
+  <title>{{ if .IsPage }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}</title>
+
+  <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ .Site.BaseURL }}/overrides.css">
+
+</head>
+
+<body>
+<div class="container">
+<nav class="navbar">
+  <!-- Left side -->
+  <div class="navbar-left">
+    <div class="navbar-item">
+      <p class="subtitle is-1">
+      <a href={{ .Site.BaseURL }}>CodeGoalie</a>
+      </p>
+    </div>
+  </div>
+  
+</nav>
+</div>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-3">
+      {{ partial "sidebar.html" . }}
+    </div>
+    <div class="column is-9">
