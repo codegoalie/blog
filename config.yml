@@ -5,3 +5,5 @@ canonifyurls: true
 permalinks:
   post: /:year/:month/:day/:title
 theme: codegoalie
+author:
+  name: Christopher R Marshall
