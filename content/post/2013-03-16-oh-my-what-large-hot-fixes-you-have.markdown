@@ -4,7 +4,7 @@ categories:
 comments: true
 date: 2013-02-26
 layout: post
-title: Oh my! What large hot fixes you have.
+title: Oh my! What large hot fixes you have
 ---
 
 We've all been there: just finished a nice new feature, deployed it out
