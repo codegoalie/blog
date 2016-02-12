@@ -28,29 +28,6 @@ you one or two headaches.
 
 <!-- more -->
 
-## Docker 102
-
-Just Google "Docker getting started" and you'll be inundated with step by step
-tutorials building a generic image. Those are all very helpful getting a handle
-on the Docker tooling, but after that there seems to be a dead end.  I found a
-really complicated way to print to the console but I was left saying, "What
-now?" A really simple way to get some use out of Docker right away, without a
-complicated cloud setup, is creating a development environment for your
-application.
-
-A great benefit here is that you don't need to install all of the dependencies
-(libraries, databases, etc.) on your machine. How many times have you gone back
-to an old project 6 or more months later only to find it no longer runs because
-it needs some old version of something? Think of Docker as a wrapper keeping
-things inside self-contained and unaffected by the outside world and not
-subject to bit rot.
-
-Another point about development environments, feel free to go against the
-"Docker Best Practices" for images when starting out. You don't have to get the
-benefit of running your production image in development from day 1. Dump
-everything into the image. You can always split things apart later and use
-Docker Compose to bring multiple images up at once.
-
 ## Turn Key Kubernetes
 
 Typically, I've used AWS for my infrastructure needs, but Google Container
