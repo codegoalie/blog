@@ -1,0 +1,74 @@
+==================================================================
+https://keybase.io/chrismar035
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://codegoalie.com
+  * I am chrismar035 (https://keybase.io/chrismar035) on keybase.
+  * I have a public key with fingerprint 1710 2A86 50B7 CD4C 6325  2B9B 81D4 F79F BDFA 7EAF
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "010160f6711cf5bd0c5218a781a82045165366b6f2b07ca07d0add3b9ca5b81cdd1e0a",
+            "fingerprint": "17102a8650b7cd4c63252b9b81d4f79fbdfa7eaf",
+            "host": "keybase.io",
+            "key_id": "81d4f79fbdfa7eaf",
+            "kid": "010160f6711cf5bd0c5218a781a82045165366b6f2b07ca07d0add3b9ca5b81cdd1e0a",
+            "uid": "bcc33444af4012d2b4740f1f6909d400",
+            "username": "chrismar035"
+        },
+        "revoke": {
+            "sig_ids": [
+                "f4f7bcea86784d2313621180b49e3fcc0f85f4ef70224fe1fa57e3d4fc4084920f"
+            ]
+        },
+        "service": {
+            "hostname": "codegoalie.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1455383347,
+    "expire_in": 157680000,
+    "prev": "97b0989c73a0d005b9f5fd12e42781c389ff3373ba0a2797ac8d45d1202bcaaf",
+    "seqno": 12,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owGtkltsVEUcxncXkEhoagrWkPDSqTVRm2ZmzsyZc9YHeYDQWJs+gBAlZZnr9rjb
+Pcs5h9pN02rBRIwSSbUPhiCkXmgMSXnREAM0KeoDkhiFxFBpolzCTSNgzGo1hDkb
+efPReZnMzPf/zTfff/Y3LcnksuPn64dOLo7NZL+5ITJbZuVzI0CEqgbyI6CkG5Mu
+Kx0nhVKgQB5ABJELjcsQkoYKBSXFyOPMQ9zDkFDkUsd1hWuwgExyyBTkSjnCl5wK
+D0mlkIYcdAITVIo6qkZBJbFYxBDE3HMpFEwqIl0HUyx8W6GIYb4RynCmubGFA2Gc
+Vlhzgse6Kwjtnl0UGvb+Q/8/+97VwAkpHYcQwg2BCCssCCPQIOP60FcEwlQY66jC
+B7VVy4EoiAd5BB0KRjtBpIfCkk6jjYOi9R2D/DZgrG8htc2AeURhBzkuRsiDgvja
+MVJC41FDtGEQY2I0Mpwy7djXSgI94mNoQL9l20uHAtmAp0E9MBAqXQx5OdBdMhy0
+5qpRmIQyLNuzgSSpxvnU1xdJrZqqX9Gi8C+nIIKKsp2yJUM6ioOwAvLISmUSpGBE
+KHU8mwTrBHq4GkS6EKQKylwP2pFepIcs0mcC+p4vmcOhgpAK31CjENYE2xZIx/ON
+cRzmCA45Zj7j0lOEWgHEQvJGH2O9sxJaNu4ECS9apg2vwpNdkQajK97Mrl2ayeYy
+Dy3LpX84s+LhRx587A/3Lr/XnntxLz8+d7255Xv30sVVN6/XauVo358nDl4oHd48
+31Z+5+fF3oO9m+ZPfdo6d/vY72TLkczShd9ev1tvfXv9yuc3s1XTuw/8cfLIvl/b
+nj5Xf+/W45um9iy7O9G+o3v8xlhXcvGDuWPr1xz9cmt4dnL66PzOmY++VR0XaMdp
+cvVa09Qb9WnVvLLnwA/7z3cfn35iw5Uzix1vDd8c7392Yt2tfybXjPSY/pbehewz
+WdUdwJdHet7fBg63Nq/+6+rHLTMLePbrH8+81Pf32uVnc9tHl2zd+NOTtcl3N7R3
+j33S99qju0urH/vsl2LbYPLque1NhzaeeuHOU1/l9kyAqeHP6y2Xd/T0NX/XN7tO
+3Qc=
+=OQux
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/chrismar035
+
+==================================================================
