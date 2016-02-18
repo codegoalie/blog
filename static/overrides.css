@@ -1,6 +1,7 @@
 .section { background: transparent; }
 
 a { color: #268BD2; }
+.title a:hover, .subtitle a:hover { border: none; }
 
 pre { margin: 0 0 1em 0; }
 
