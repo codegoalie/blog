@@ -30,14 +30,7 @@
 <body>
 <div class="container">
 <nav class="navbar">
-  <!-- Left side -->
-  <div class="navbar-left">
-    <div class="navbar-item">
-      <p class="subtitle is-1">
-      <a href={{ .Site.BaseURL }}>CodeGoalie</a>
-      </p>
-    </div>
-  </div>
+  {{ partial "navbar_left.html" . }}
   {{ partial "navbar_right.html" . }}
 </nav>
 </div>
