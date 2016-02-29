@@ -11,9 +11,8 @@
 
   <title>{{ if .IsPage }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}</title>
 
-  <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ .Site.BaseURL }}/overrides.css">
+  {{ partial "header_includes.html" }}
 
   <link href="/favicon.png" rel="shortcut icon">
 
