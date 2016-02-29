@@ -1,7 +1,6 @@
 baseurl: "https://codegoalie.com"
 languageCode: "en-us"
 title: CodeGoalie
-canonifyurls: true
 permalinks:
   post: /:year/:month/:day/:title
 theme: codegoalie
