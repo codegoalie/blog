@@ -1,0 +1,74 @@
+==================================================================
+https://keybase.io/codegoalie
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://codegoalie.com
+  * I am codegoalie (https://keybase.io/codegoalie) on keybase.
+  * I have a public key with fingerprint 3D89 D9A7 8FE8 9984 C3FF  AAB3 404D D543 6AC9 13F0
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101d7d2baab1fdb6e71148ae12869cc61157eae3689be240b39630377df3b89f2dc0a",
+            "fingerprint": "3d89d9a78fe89984c3ffaab3404dd5436ac913f0",
+            "host": "keybase.io",
+            "key_id": "404dd5436ac913f0",
+            "kid": "0101d7d2baab1fdb6e71148ae12869cc61157eae3689be240b39630377df3b89f2dc0a",
+            "uid": "7d3335ff23a162fe67197bc7a74a7719",
+            "username": "codegoalie"
+        },
+        "revoke": {
+            "sig_ids": [
+                "686bd44d7ffd0cc0bf6836bf596845b8e7e238d8af2c38e07c0c771143e695610f"
+            ]
+        },
+        "service": {
+            "hostname": "codegoalie.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1461183079,
+    "expire_in": 157680000,
+    "prev": "cec00a4832c22650bed8f35d43619ada6c37f771f30b64974f6eb21839d48ccb",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.53
+Comment: https://keybase.io/crypto
+
+yMJnAnicrVJtaFdVHP5vq5aDYB9SEYnaxV6sMc+5597zcsNCSPpLmQ2NQSbX8/rf
+5b/d++/eu80xtsJeMPrUVuGHoib1YYg4a8pEe3FMUWayEF9SlAialp9CyoTaOnfU
+p/rY+XLent/zPL/nnOl7GkpNdeu3f9w3eeHy8bqZY7d6Sh3Lf6gMOCJR/U4w4FT1
+4qS7lM7ysBopJ3AABFAR5QrOBTRKYE0g9CjX0KWYSYkh9InmGmHKhHY9IBDDCCBC
+lEGCMuMqCbjT6pgorui0lkZxbmmRokwxTqjRlDHqSWSMVUAe8JTyPYS5ZBAZYAs7
+k6yosOYEz3RblNgzuwkX7f0H/n/23bNIRxRCyDfGRRxi12hMICNCEk48Tuy6AGY6
+jXm3tmiZKF1JeFekncFWJ9W9SVUXyWZRxdrOnGCrgykWyvMUMUYBKYEwmCIsjM8w
+9XxBNdEuoopy40pENSASSFK0gDRmPobAONsst9XsjeQieZHTv/TbZNJtvdXSJE9k
+0mXvOvO8lgWFr7y/VoD7tAj/pglFFCv7TraiV6dZlMROAC1S5lHBCz2bGkWAsFZH
+76hFqQ6jAuETTIEdhY7uLfS1BIB7FLnSdbEPhFbUIF/Zd4KMK44lIsZ2YxAQ2GPE
+M1gL11Iz5VEphVM09nKcOIFVynnFUtroYp73pDbRqa9fuqNU11S668764v+WmpY0
+//Ord+DGhezk5O5N5fJwy1sdG4feT+On61tu7Vno/vHFkaOrNq78KLvceGL+yvmZ
+NfqJ+dsXDxx65Ojo59f3nfrq9FNLX6A33js0tDc4Vr1303hYjpourgK1neKL5fLx
+w7Mz8PvZKwyf+GD9uYnm8tgncz+R/J0ljZ+2HGkPfwumdz3f+S1asaf0+3w09u7D
+wfWOaxMDO9uH1w69Hs5tefTI/cNtf157aN2N+mXNrYcn7rvw4fG3R9ufPHOwf7Tv
+9urNb+w6/+r+uxtW/9ww9tpz0VYw4og1p/Ccu/AlPLMh/HV+asP2z24+c3P6l5GR
+4MEt5+KTax/47ur0Y763brz8ytlLz04unf3mj91vVqe2DQ7u/Qu/I2PA
+=ybF/
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/codegoalie
+
+==================================================================
