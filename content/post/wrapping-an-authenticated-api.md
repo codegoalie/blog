@@ -4,6 +4,19 @@ title = "Wrapping an Authenticated HTTP API"
 categories = ["Ruby HowTo"]
 +++
 
+Today, we'll look at using an authenticated third party HTTP API in Ruby in
+order to use it in our application without the need to handle the underlying
+authentication manually. This is a pattern I use often with authenticated third
+party APIs and find that abstracting the implementation allows me to write much
+cleaner application code focused on my domain instead of the API.
+
+<!-- more -->
+
+First, let's define our example API which we'll work against. This service
+tracks animals kept in a zoo. It has three main endpoints we'll work with.
+The first 
+
+
 - API usage
   - Authenticate and get token and expiration
   - Auth token for requests
