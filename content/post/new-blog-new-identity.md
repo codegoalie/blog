@@ -16,3 +16,9 @@ vulcanized rubber disks with my body." Also, my last name is not Mar.
 Along with Twitter, I'll be moving other usernames to codegoalie shortly. I
 already snagged codegoalie@gmail.com. Either way, if you see codegoalie or
 chrismar035 anywhere, it's probably me.
+
+__Update 2016-07027:__ I updated my Github username to
+[@codegoalie](https://github.com/codegoalie). If you've cloned some public
+repos or were following me, change those links. I've also re-registered
+@chrismar035 again and will be updating repos with links to the new
+corresponding ones.
