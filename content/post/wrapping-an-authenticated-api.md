@@ -1,7 +1,7 @@
 +++
 date = "2016-04-18T15:01:13-04:00"
 title = "Wrapping an Authenticated HTTP API"
-categories = ["Ruby HowTo"]
+categories = ["Ruby", "How-To"]
 +++
 
 Today, we'll look at using an authenticated third party HTTP API in Ruby in
@@ -13,12 +13,12 @@ cleaner application code focused on my domain instead of the API.
 <!-- more -->
 
 First, let's define our example API which we'll work against. This service
-tracks animals kept in a zoo. As we're mostly concerned with the authentication
-part of the API, we'll only discuss three endpoints. First we have the create
-token endpoint which will take our username and password and return a token.
+is very simple in that in only allows us to authenticate and get & update our
+own profile. As we're mostly concerned with the authentication part of the API,
+we'll only discuss three endpoints. First we have the create token endpoint
+which will take our username and password and return a token.
 
-
-```
+``` http
 POST /token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
@@ -36,12 +36,16 @@ Response body:
 }
 ```
 
-Secondly, we have a refresh token endpoint which will take our refresh token and
-return a new token for us. This will allow our client to use the API for a
-longer session without requiring the user to reenter then credentials or having
-very long lived tokens.
+The `/token` endpoint returs two tokens for us. The access token is used to
+authenticate against the other endpoints of the API. We'll use the
+`Authorization` header with the token and the type. The refresh token will be
+used to get new tokens when our access token expires. Using only these two tokens
+we can maintain access to the API on behalf of a user without the need to store their
+credentials while avoiding very long lived tokens.
 
-```
+We can refresh our tokens with the refresh `/endpoint`.
+
+``` http
 POST /refresh HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
@@ -61,10 +65,9 @@ Response body:
 ```
 
 Lastly, we have the only non-auth related endpoint we will talk about. This
-endpoint is a get which will return the current user's profile. In our small
-API, that only includes their username.
+endpoint is a get which will return the current user's profile.
 
-```
+``` http
 GET /user HTTP/1.1
 Accept: application/json
 Authorization: BEARER -ZK5mLCz4EtnJdjeozKPCg
@@ -78,11 +81,9 @@ Response body:
 
 ```
 
-You might call this cheating, but by POSTing to the /user endpoint, we can
-change our user's attributes. For security reasons, our API does not allow
-changing your username.
+We can also update our profile by `POST`ing to that endpoint.
 
-```
+``` http
 POST /user HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
@@ -105,13 +106,16 @@ the API returns a 406 status code.
 # Client Interface
 
 When designing any interface, I try to put myself in the shoes of the consumer
-and define the idea usage before thinking about the internal implementation.
+and define the ideal usage before thinking about the internal implementation.
 Ideally, I'd like to give my username and password to the class and then not
 think about authentication anymore. 
 
-```
+``` ruby
 client = MyApiClient.new(username, password)
-client.user #=> <User username: "ned", full_name: "Ned Plimpton", occupation: "Airplane Pilot">
+user = client.user #=> <User username: "ned", full_name: "Ned Plimpton", occupation: "Airplane Pilot">
+user.full_name = 'Kingsley Zissou'
+user.occupation = 'Boom Operator'
+user.update
 ```
 
 Our client should be initialized with username and password and then
