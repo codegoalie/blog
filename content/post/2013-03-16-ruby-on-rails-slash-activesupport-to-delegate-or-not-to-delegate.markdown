@@ -1,6 +1,6 @@
 ---
 categories:
-- HowTo
+- How-To
 - Ruby On Rails
 - Self-Reference
 comments: true

@@ -1,6 +1,6 @@
 ---
 categories:
-- HowTo
+- How-To
 - Self-Reference
 comments: true
 date: 2011-02-15
@@ -12,7 +12,7 @@ Not knowing perl, I set out to write my own script in Ruby to send auto-response
 
 <!--more-->
 
-I recently moved our company's e-mail server to <a href="http://slicehost.com">a new VPS on slicehost</a> and started using postfix. I followed <a href="http://www.howtoforge.com/virtual-users-and-domains-with-postfix-courier-mysql-and-squirrelmail-ubuntu-10.10">this great tutorial on HowToForge</a> (except for the squirrelMail part) to setup a mysql database with the vmail folders to store the mail. I couldn't get the Autoresponder in the tutorial to function correctly. Actually, it was 'eating' random mail, which was a weeks worth of headache in itself. So, we rolled out without any auto-response capabilities. 
+I recently moved our company's e-mail server to <a href="http://slicehost.com">a new VPS on slicehost</a> and started using postfix. I followed <a href="http://www.howtoforge.com/virtual-users-and-domains-with-postfix-courier-mysql-and-squirrelmail-ubuntu-10.10">this great tutorial on How-ToForge</a> (except for the squirrelMail part) to setup a mysql database with the vmail folders to store the mail. I couldn't get the Autoresponder in the tutorial to function correctly. Actually, it was 'eating' random mail, which was a weeks worth of headache in itself. So, we rolled out without any auto-response capabilities. 
 
 I've been half-heartedly looking for another solution every few weeks, but haven't found anything other than a few Perl scripts (I'm not really famaliar with perl). So, yesterday I decided to write a ruby script to send auto-responses. I wanted to use text files to hold each autoresponse. Then, I'd just move them int and out of a folder to activate and deactivate them. I also took advantage of the 'new' folder within the vmail structure to reply to mail newer than the autoresponder config file.
 

@@ -1,6 +1,6 @@
 ---
 categories:
-- HowTo
+- How-To
 - Self-Reference
 comments: true
 date: 2010-05-20

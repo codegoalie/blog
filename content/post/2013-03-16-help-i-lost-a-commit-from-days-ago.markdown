@@ -1,7 +1,7 @@
 ---
 categories:
 - git
-- HowTo
+- How-To
 comments: true
 date: 2013-02-08
 layout: post

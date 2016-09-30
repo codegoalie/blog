@@ -1,6 +1,6 @@
 ---
 categories:
-- HowTo
+- How-To
 comments: true
 date: 2010-06-25
 layout: post
