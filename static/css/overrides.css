@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Anurati';
-  src: local('Augnurati'), url('Anurati-Regular.otf') format('opentype');
+  src: local('Anurati'), url('/Anurati-Regular.otf') format('opentype');
 }
-.brand, .profile-name { font-family: 'Anurati' }
+.brand, .profile-name { font-family: 'Anurati', sans-serif; }
 .section { background: transparent; }
 
 a { color: #268BD2; }
