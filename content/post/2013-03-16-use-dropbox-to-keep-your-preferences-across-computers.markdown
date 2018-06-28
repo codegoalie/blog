@@ -11,7 +11,9 @@ Sometimes it can be kind of painful to discover a cool new setting or mode for o
 
 <!--more-->
 
-Then I discovered <a href="https://www.dropbox.com/referrals/NTc0MjYxNjc5">Dropbox</a> (that link is a referral link, <a href="http://dropbox.com">here's the regular homepage</a>). Not only is Dropbox a free 2GB of cloud storage for backing up your much needed files, but the really cool thing about Dropbox is that it <strong>automatically detects when files change and syncs them across all of your computers</strong>. Think about configuration files and read that again. Discover a new mode in any program with a config file and BAM! every computer you use has that mode enabled. The sync works in all directions so it doesn't matter which computer you make the change on, every computer gets it. Seems perfect, right?
+Then I discovered <a href="https://db.tt/YnlXA7Ix">Dropbox</a> (that link is a referral link, <a href="http://dropbox.com">here's the regular homepage</a>). Not only is Dropbox a free 2GB of cloud storage for backing up your much needed files, but the really cool thing about Dropbox is that it <strong>automatically detects when files change and syncs them across all of your computers</strong>. Think about configuration files and read that again. Discover a new mode in any program with a config file and BAM! every computer you use has that mode enabled. The sync works in all directions so it doesn't matter which computer you make the change on, every computer gets it. Seems perfect, right?
+
+If you're new to Dropbox, check out [this post on Cloudwards](https://www.cloudwards.net/how-to-share-files-on-dropbox/) on getting setup.
 
 Here's how it all works. When you install the Dropox client software on your computer, it will create a Dropbox folder with all your stuff in it. Add, delete or edit any file in this folder and Dropbox will sync it up to their servers, plus download the changes to any other computer running the Dropbox client with your account. It's kind of cool to have your desktop and laptop running next to each other and watch them download the changes instantly. 
 
