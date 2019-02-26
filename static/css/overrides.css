@@ -3,9 +3,11 @@
   src: local('Anurati'), url('/Anurati-Regular.otf') format('opentype');
 }
 .brand, .profile-name { font-family: 'Anurati', sans-serif; }
+.brand a { color: hsl(0, 0%, 22%); }
+.brand a:hover { color: hsl(0, 0%, 0%); }
 .section { background: transparent; }
 
-a { color: #268BD2; }
+a { color: hsl(205, 69%, 49%); }
 .title a:hover, .subtitle a:hover { border: none; }
 
 pre { margin: 0 0 1em 0; }
