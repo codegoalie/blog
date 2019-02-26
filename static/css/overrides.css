@@ -10,7 +10,9 @@ a { color: #268BD2; }
 
 pre { margin: 0 0 1em 0; }
 
+p.categories { margin-top: 1rem; }
 p.categories a:not(:last-child):after { content:' |'; }
+p.summary { margin-top: 0.5rem; }
 
 div#profile { text-align: center; }
 img#profile-pic {
