@@ -1,7 +1,7 @@
 +++
 date = "2019-02-27T05:09:02-05:00"
 title = "Service 'Objects' in Buffalo"
-categories = ["Golang"]
+categories = ["Golang", "Buffalo"]
 +++
 
 For many recent projects, I've been using the excellent
