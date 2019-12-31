@@ -6,7 +6,7 @@
     <a href="https://twitter.com/codegoalie">
       <span class="icon is-medium"><i class="fa fa-twitter-square"></i></span>
     </a>
-    <a href="{{ .RSSLink }}">
+    <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}">
       <span class="icon is-medium"><i class="fa fa-rss"></i></span>
     </a>
   </p>
