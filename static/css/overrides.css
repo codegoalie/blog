@@ -24,3 +24,13 @@ img#profile-pic {
 }
 
 blockquote p { font-size: 1.5rem; }
+
+.icon.keybase {
+  background-image: url("/images/keybase2.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.icon.keybase:hover {
+  background-image: url("/images/keybase2-hover.png");
+}
