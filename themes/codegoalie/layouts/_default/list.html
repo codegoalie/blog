@@ -5,7 +5,7 @@
 <h1 class="title is-2">{{ .Title }} Archive</h1>
 </div>
 
-{{ range where .Data.Pages "Section" "post" }}
+{{ range where .Data.Pages "Section" "posts" }}
   {{ partial "post_summary.html" . }}
 {{ end }}
 </section>
