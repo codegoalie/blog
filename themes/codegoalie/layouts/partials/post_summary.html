@@ -3,7 +3,7 @@
   <div class="container">
     <div class="heading">
       <h1 class="title">
-        <a href="{{ .Permalink }}/index.html" rel="bookmark">
+        <a href="{{ .Permalink }}" rel="bookmark">
           {{ .Title }}
         </a>
       </h1>
@@ -14,7 +14,7 @@
     <p class="summary">{{ .Summary }}</p>
     <p class="categories">
       {{ range .Params.categories }}
-        <a href="{{ $baseUrl }}/categories/{{ lower . | urlize }}/index.html" rel="category">{{ . }}</a>
+        <a href="{{ $baseUrl }}/categories/{{ lower . | urlize }}" rel="category">{{ . }}</a>
       {{ end }}
     </p>
   </div>

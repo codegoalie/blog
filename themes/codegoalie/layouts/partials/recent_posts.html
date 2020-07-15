@@ -7,7 +7,7 @@
 <ul>
 {{ range first 5 (where .Data.Pages "Section" "post") }}
   <li>
-    <a href="{{ .Permalink }}/index.html">{{ .Title }}</a>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
   </li>
 {{ end }}
 </ul>
