@@ -7,6 +7,6 @@ draft = true
 
 An intro here...
 
-<!-- more -->
+<!--more-->
 
 Additional content
