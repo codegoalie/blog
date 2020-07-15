@@ -30,7 +30,4 @@ HUGO_VERSION = "0.69.0"
 HUGO_ENABLEGITINFO = "true"
 
 [[plugins]]
-package = "netlify-plugin-hugo-cache-resources"
-
-[[plugins]]
 package = "netlify-plugin-image-optim"
