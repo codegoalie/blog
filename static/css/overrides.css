@@ -34,3 +34,18 @@ blockquote p { font-size: 1.5rem; }
 .icon.keybase:hover {
   background-image: url("/images/keybase2-hover.webp");
 }
+
+.content h2 {
+  background-image: linear-gradient(hsla(205, 69%, 49%, 50%), hsl(205, 69%, 49%, 50%));
+  background-size: 100% 6px;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+.heading h1 a:hover {
+  color: hsl(205, 69%, 49%);
+}
+
+.subtitle {
+  letter-spacing: 0px;
+}
