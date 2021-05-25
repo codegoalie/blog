@@ -1,0 +1,161 @@
+{
+  "resortCode": "VGF",
+  "roomCode": "87",
+  "availability": [
+    {
+      "date": "2022-03-01",
+      "rooms": 24,
+      "points": 46
+    },
+    {
+      "date": "2022-03-02",
+      "rooms": 22,
+      "points": 46
+    },
+    {
+      "date": "2022-03-03",
+      "rooms": 21,
+      "points": 46
+    },
+    {
+      "date": "2022-03-04",
+      "rooms": 20,
+      "points": 55
+    },
+    {
+      "date": "2022-03-05",
+      "rooms": 20,
+      "points": 55
+    },
+    {
+      "date": "2022-03-06",
+      "rooms": 21,
+      "points": 46
+    },
+    {
+      "date": "2022-03-07",
+      "rooms": 22,
+      "points": 46
+    },
+    {
+      "date": "2022-03-08",
+      "rooms": 22,
+      "points": 46
+    },
+    {
+      "date": "2022-03-09",
+      "rooms": 22,
+      "points": 46
+    },
+    {
+      "date": "2022-03-10",
+      "rooms": 22,
+      "points": 46
+    },
+    {
+      "date": "2022-03-11",
+      "rooms": 20,
+      "points": 55
+    },
+    {
+      "date": "2022-03-12",
+      "rooms": 19,
+      "points": 55
+    },
+    {
+      "date": "2022-03-13",
+      "rooms": 15,
+      "points": 46
+    },
+    {
+      "date": "2022-03-14",
+      "rooms": 15,
+      "points": 46
+    },
+    {
+      "date": "2022-03-15",
+      "rooms": 14,
+      "points": 46
+    },
+    {
+      "date": "2022-03-16",
+      "rooms": 12,
+      "points": 46
+    },
+    {
+      "date": "2022-03-17",
+      "rooms": 14,
+      "points": 46
+    },
+    {
+      "date": "2022-03-18",
+      "rooms": 13,
+      "points": 55
+    },
+    {
+      "date": "2022-03-19",
+      "rooms": 13,
+      "points": 55
+    },
+    {
+      "date": "2022-03-20",
+      "rooms": 16,
+      "points": 46
+    },
+    {
+      "date": "2022-03-21",
+      "rooms": 17,
+      "points": 46
+    },
+    {
+      "date": "2022-03-22",
+      "rooms": 18,
+      "points": 46
+    },
+    {
+      "date": "2022-03-23",
+      "rooms": 21,
+      "points": 46
+    },
+    {
+      "date": "2022-03-24",
+      "rooms": 22,
+      "points": 46
+    },
+    {
+      "date": "2022-03-25",
+      "rooms": 24,
+      "points": 55
+    },
+    {
+      "date": "2022-03-26",
+      "rooms": 25,
+      "points": 55
+    },
+    {
+      "date": "2022-03-27",
+      "rooms": 27,
+      "points": 46
+    },
+    {
+      "date": "2022-03-28",
+      "rooms": 27,
+      "points": 46
+    },
+    {
+      "date": "2022-03-29",
+      "rooms": 27,
+      "points": 46
+    },
+    {
+      "date": "2022-03-30",
+      "rooms": 26,
+      "points": 46
+    },
+    {
+      "date": "2022-03-31",
+      "rooms": 26,
+      "points": 46
+    }
+  ]
+}
