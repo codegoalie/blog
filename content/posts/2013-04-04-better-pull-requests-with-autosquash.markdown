@@ -115,7 +115,8 @@ to identify commits is that this will work even after a rebase without
 
 Here's how it would look in github:
 
-{% img /images/autosquash/fourth_commit.png %}
+![Screenshot of Github PR with fixup commit linked in
+comment](/images/autosquash/fourth-commit.png)
 
 *Obviously, don't have conversations with
 yourself on github. This is purely educational ;)*
