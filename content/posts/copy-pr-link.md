@@ -2,7 +2,7 @@
 date = "2023-01-04T14:35:12-05:00"
 title = "One-liner to copy a Github PR link from the terminal"
 categories = ["git", "Command-Line"]
-draft = true
+draft = false
 +++
 
 Here's a super quick one-liner to copy the current branch's PR URL to your
