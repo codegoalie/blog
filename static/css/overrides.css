@@ -29,6 +29,7 @@ blockquote p { font-size: 1.5rem; }
   background-image: url("/images/keybase2.webp");
   background-position: center;
   background-size: cover;
+  height: 28px;
 }
 
 .icon.keybase:hover {

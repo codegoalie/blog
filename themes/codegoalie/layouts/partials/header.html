@@ -11,13 +11,10 @@
 
   <title>{{ if .IsPage }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/1ac1d0d72d.js" crossorigin="anonymous"></script>
   {{ partial "header_includes.html" }}
 
   <link href="/favicon.png" rel="shortcut icon">
-
-  <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-  <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
 
   <link rel="stylesheet" href="{{ .Site.BaseURL }}/atom-one-dark.css">
   <script src="{{ .Site.BaseURL }}/highlight.pack.js"></script>
