@@ -4,5 +4,6 @@ title: CodeGoalie
 permalinks:
   post: /:year/:month/:day/:title
 theme: codegoalie
-author:
-  name: Christopher R Marshall
+params:
+  author:
+    name: Christopher R Marshall
