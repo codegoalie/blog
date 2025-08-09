@@ -9,37 +9,95 @@ body {
   color: #e0e0e0;
 }
 
-.brand, .profile-name { font-family: 'Anurati', sans-serif; }
-.brand a { color: #e0e0e0; }
-.brand a:hover { color: #ffffff; }
-.section { background: transparent; }
+.brand,
+.profile-name {
+  font-family: 'Anurati', sans-serif;
+}
+
+.brand a {
+  color: #e0e0e0;
+}
+
+.brand a:hover {
+  color: #ffffff;
+}
+
+.section {
+  background: transparent;
+}
 
 /* Dark mode overrides for various elements */
-.title, .subtitle { color: #e0e0e0; }
-.content { color: #e0e0e0; }
-.navbar { background-color: #2d2d2d; }
-.navbar-item { color: #e0e0e0; }
-.navbar-item:hover { color: #ffffff; background-color: #3d3d3d; }
-.card { background-color: #2d2d2d; }
-.card-content { color: #e0e0e0; }
+.title,
+.subtitle {
+  color: #e0e0e0;
+}
 
-a { color: hsl(205, 69%, 65%); }
-.title a:hover, .subtitle a:hover { border: none; }
+.content {
+  color: #e0e0e0;
+  font-family: "Charter", "Georgia", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times", serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
 
-pre { margin: 0 0 1em 0; }
+.navbar {
+  background-color: #2d2d2d;
+}
 
-p.categories { margin-top: 1rem; }
-p.categories a:not(:last-child):after { content:' |'; }
-p.summary { margin-top: 0.5rem; }
+.navbar-item {
+  color: #e0e0e0;
+}
 
-div#profile { text-align: center; }
+.navbar-item:hover {
+  color: #ffffff;
+  background-color: #3d3d3d;
+}
+
+.card {
+  background-color: #2d2d2d;
+}
+
+.card-content {
+  color: #e0e0e0;
+}
+
+a {
+  color: hsl(205, 69%, 65%);
+}
+
+.title a:hover,
+.subtitle a:hover {
+  border: none;
+}
+
+pre {
+  margin: 0 0 1em 0;
+}
+
+p.categories {
+  margin-top: 1rem;
+}
+
+p.categories a:not(:last-child):after {
+  content: ' |';
+}
+
+p.summary {
+  margin-top: 0.5rem;
+}
+
+div#profile {
+  text-align: center;
+}
+
 img#profile-pic {
   display: block;
   height: 150px;
   margin: 0 auto 1em auto;
 }
 
-blockquote p { font-size: 1.5rem; }
+blockquote p {
+  font-size: 1.5rem;
+}
 
 .icon.keybase {
   background-image: url("/images/keybase2.webp");
@@ -69,26 +127,45 @@ blockquote p { font-size: 1.5rem; }
 }
 
 /* Additional dark mode styles */
-h1, h2, h3, h4, h5, h6 { color: #e0e0e0; }
-p, li, td, th { color: #e0e0e0; }
-blockquote { 
-  background-color: #2d2d2d; 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #e0e0e0;
+}
+
+p,
+li,
+td,
+th {
+  color: #e0e0e0;
+}
+
+blockquote {
+  background-color: #2d2d2d;
   border-left: 4px solid hsl(205, 69%, 65%);
   color: #e0e0e0;
 }
-pre, code { 
-  background-color: #2d2d2d; 
-  color: #e0e0e0; 
+
+pre,
+code {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
 }
-.tag { 
-  background-color: #3d3d3d; 
-  color: #e0e0e0; 
+
+.tag {
+  background-color: #3d3d3d;
+  color: #e0e0e0;
 }
-.box { 
-  background-color: #2d2d2d; 
-  color: #e0e0e0; 
+
+.box {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
 }
-.footer { 
-  background-color: #1a1a1a; 
-  color: #e0e0e0; 
+
+.footer {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
 }
