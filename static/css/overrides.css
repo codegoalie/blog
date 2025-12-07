@@ -9,6 +9,14 @@ body {
   color: #e0e0e0;
 }
 
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Overpass Mono', monospace;
+}
+
 .brand,
 .profile-name {
   font-family: 'Anurati', sans-serif;

@@ -9,6 +9,14 @@ body {
   color: #e0e0e0;
 }
 
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
 .brand,
 .profile-name {
   font-family: 'Anurati', sans-serif;
@@ -116,7 +124,7 @@ blockquote p {
 .content li,
 .content td,
 .content th {
-  font-family: 'Corben', serif;
+  font-family: 'Overpass Mono', monospace;
 }
 
 .content h2 {
@@ -143,6 +151,7 @@ h4,
 h5,
 h6 {
   color: #e0e0e0;
+  font-family: 'Gabarito', sans-serif;
 }
 
 p,
