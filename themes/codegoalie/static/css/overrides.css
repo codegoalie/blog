@@ -34,6 +34,10 @@ textarea {
   background: transparent;
 }
 
+.container {
+  max-width: 1200px;
+}
+
 /* Dark mode overrides for various elements */
 .title,
 .subtitle {
@@ -66,11 +70,11 @@ textarea {
 }
 
 a {
-  color: hsl(205, 69%, 65%);
+  color: hsl(140, 69%, 65%);
 }
 
 a:hover {
-  color: hsl(205, 69%, 75%);
+  color: hsl(140, 69%, 75%);
 }
 
 .title a:hover,
@@ -128,7 +132,7 @@ blockquote p {
 }
 
 .content h2 {
-  background-image: linear-gradient(hsla(205, 69%, 65%, 50%), hsl(205, 69%, 65%, 50%));
+  background-image: linear-gradient(hsla(140, 69%, 65%, 50%), hsl(140, 69%, 65%, 50%));
   background-size: 100% 6px;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -136,7 +140,7 @@ blockquote p {
 }
 
 .heading h1 a:hover {
-  color: hsl(205, 69%, 65%);
+  color: hsl(140, 69%, 65%);
 }
 
 .subtitle {
@@ -163,7 +167,7 @@ th {
 
 blockquote {
   background-color: #2d2d2d;
-  border-left: 4px solid hsl(205, 69%, 65%);
+  border-left: 4px solid hsl(140, 69%, 65%);
   color: #e0e0e0;
 }
 

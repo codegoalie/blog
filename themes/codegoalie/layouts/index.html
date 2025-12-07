@@ -1,7 +1,9 @@
 {{ partial "header.html" . }}
 
 {{ range first 10 (where .Site.RegularPages "Section" "posts") }}
-  {{ partial "post_summary.html" . }}
+{{ partial "post_summary.html" . }}
 {{ end }}
+</div>
+<div class="column is-2">
 
-{{ partial "footer.html" . }}
+  {{ partial "footer.html" . }}
