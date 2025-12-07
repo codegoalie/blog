@@ -34,17 +34,6 @@ body {
 
 .content {
   color: #e0e0e0;
-  font-size: 1.5rem;
-  line-height: 1.3;
-}
-
-/* Article body text font */
-.content p,
-.content li,
-.content td,
-.content th {
-  font-family: 'Corben', serif;
-  line-height: 1.6;
 }
 
 .navbar {
@@ -120,6 +109,14 @@ blockquote p {
 
 .icon.keybase:hover {
   background-image: url("/images/keybase2-hover.webp");
+}
+
+/* Article body text font */
+.content p,
+.content li,
+.content td,
+.content th {
+  font-family: 'Corben', serif;
 }
 
 .content h2 {
