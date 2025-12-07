@@ -1,16 +1,18 @@
 <div class="navbar-right">
+  <!--
   <p class="navbar-item">
-    <a href="https://keybase.io/codegoalie">
-      <span class="icon is-medium keybase">
-      </span>
-    </a>
     <a href="https://social.c18l.com/@chris">
       <span class="icon is-medium"><i class="fa-mastodon fa-brands"></i></span>
     </a>
+  </p>
+  -->
+  <p class="navbar-item">
     <a href="https://github.com/codegoalie">
       <span class="icon is-medium"><i class="fa-square-github fa-brands"></i></span>
     </a>
-    <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}">
+  </p>
+  <p class="navbar-item">
+    <a href="{{ with .OutputFormats.Get " RSS" }}{{ .RelPermalink }}{{ end }}">
       <span class="icon is-medium"><i class="fa-rss fa-solid"></i></span>
     </a>
   </p>
