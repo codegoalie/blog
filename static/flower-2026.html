@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Epcot Flower &amp; Garden Festival: 2025 vs. 2026 Menu Comparison</title>
+  <style>
+    :root {
+      --green-dark:  #2d6a4f;
+      --green-mid:   #40916c;
+      --green-light: #d8f3dc;
+      --red:         #c1121f;
+      --blue:        #1d6fa4;
+      --bg:          #f8faf8;
+      --card:        #ffffff;
+      --text:        #1a1a2e;
+      --muted:       #6b7280;
+      --border:      #d1e8d9;
+      --radius:      12px;
+      --shadow:      0 2px 12px rgba(0,0,0,.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--green-dark);
+      letter-spacing: -.5px;
+      line-height: 1.2;
+    }
+    header p.subtitle {
+      margin-top: .5rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .header-bar {
+      display: flex;
+      justify-content: center;
+      gap: .75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .3rem .75rem;
+      border-radius: 99px;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+    .badge-stayed  { background: #e0f2fe; color: #0369a1; }
+    .badge-gone    { background: #fee2e2; color: #b91c1c; }
+    .badge-new     { background: #dcfce7; color: #166534; }
+
+    /* ── Main layout ── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ── Section cards ── */
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .section-card h2 {
+      background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+      color: #fff;
+      padding: .85rem 1.25rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    .section-card h3 {
+      background: linear-gradient(135deg, #3d8b6e, var(--green-mid));
+      color: #fff;
+      padding: .7rem 1.25rem;
+      font-size: .95rem;
+      font-weight: 600;
+    }
+    .section-card .card-body {
+      padding: 1.25rem;
+    }
+
+    /* ── Gone / New top-level booths ── */
+    .booth-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      padding: 1.25rem;
+    }
+    .booth-block {
+      border-radius: 8px;
+      padding: .9rem 1rem;
+    }
+    .booth-block.gone { background: #fff5f5; border: 1px solid #fecaca; }
+    .booth-block.new  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .booth-block strong {
+      display: block;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+    }
+    .booth-block.gone strong { color: var(--red); }
+    .booth-block.new  strong { color: var(--green-dark); }
+    .booth-block ul {
+      list-style: none;
+      padding: 0;
+    }
+    .booth-block ul li {
+      font-size: .82rem;
+      color: #374151;
+      padding: .18rem 0;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+    .booth-block ul li:last-child { border-bottom: none; }
+    .location-note {
+      font-size: .75rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── Comparison tables ── */
+    .table-wrap {
+      overflow-x: auto;
+      padding: 0 1.25rem 1.25rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .83rem;
+    }
+    thead tr {
+      background: var(--green-light);
+    }
+    thead th {
+      padding: .6rem .75rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--green-dark);
+      border-bottom: 2px solid var(--green-mid);
+    }
+    thead th:nth-child(1) { color: #0369a1; }
+    thead th:nth-child(2) { color: var(--red); }
+    thead th:nth-child(3) { color: #166534; }
+
+    tbody tr:nth-child(even) { background: #f9fafb; }
+    tbody tr:hover           { background: #eef9f1; }
+    td {
+      padding: .55rem .75rem;
+      vertical-align: top;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+    }
+    td:nth-child(1) { color: #1e40af; }
+    td:nth-child(2) { color: #991b1b; }
+    td:nth-child(3) { color: #166534; }
+    td em  { font-style: italic; color: var(--muted); }
+    td strong { font-weight: 600; }
+
+    /* ── Source list ── */
+    .sources {
+      margin-top: 3rem;
+      padding: 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .sources h2 {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: .75rem;
+    }
+    .sources ul { list-style: none; padding: 0; }
+    .sources ul li { font-size: .8rem; padding: .25rem 0; }
+    .sources a { color: var(--blue); text-decoration: none; }
+    .sources a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      table { font-size: .76rem; }
+      td, thead th { padding: .45rem .5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🌸 Epcot Flower &amp; Garden Festival<br>Complete 2025 vs. 2026 Menu Comparison</h1>
+    <p class="subtitle">What's staying, what's gone, and what's brand new in 2026</p>
+    <div class="header-bar">
+      <span class="badge badge-stayed">🔵 Stayed</span>
+      <span class="badge badge-gone">🔴 Gone in 2026</span>
+      <span class="badge badge-new">🟢 New in 2026</span>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       ENTIRE BOOTHS GONE
+  ════════════════════════════════════════════════ -->
+  <div class="section-card">
+    <h2>Entire Booths Gone in 2026</h2>
+    <div class="booth-grid">
+
+      <div class="booth-block gone">
+        <strong>Refreshment Port</strong>
+        <ul>
+          <li>Provence Poutine (Herbes de Provence fries, goat brie, lavender honey, hazelnut croquant, fresh lavender)</li>
+          <li>Country Boy Brewing Raspberry Lemon Hard Cider</li>
+          <li>Villa Maria EarthGarden Sauvignon Blanc</li>
+          <li>Frozen Mojito with Boyd &amp; Blair Rum</li>
+        </ul>
+      </div>
+
+      <div class="booth-block gone">
+        <strong>The Land Cart</strong>
+        <ul>
+          <li>Plant-based Mediterranean Vegetable Wrap</li>
+          <li>Strawberry Fruit Bar</li>
+          <li>Tropical Smoothie with DOLE Whip, Banana &amp; Mango</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       BRAND NEW BOOTHS
+  ════════════════════════════════════════════════ -->
+  <div class="section-card">
+    <h2>Brand New Booths in 2026</h2>
+    <div class="booth-grid">
+
+      <div class="booth-block new">
+        <strong>Nectar hosted by AdventHealth</strong>
+        <span class="location-note">Land Kiosk, World Nature</span>
+        <ul>
+          <li>Tuna Poke Bowl (edamame, avocado, mango, pickled red onions, seaweed salad, furikake, umami sauce on sticky rice)</li>
+          <li>Plant-based Poke Bowl</li>
+          <li>Coconut Panna Cotta (cherry gelée, matcha crumb, citrus cookie, plant-based meringue, flower confetti) <em>plant-based</em></li>
+          <li>Frozen Island Escape (Minute Maid Peach and Mango Smoothie with Outshine Frozen Mini Fruit Pop)</li>
+        </ul>
+      </div>
+
+      <div class="booth-block new">
+        <strong>Sommerfest</strong>
+        <span class="location-note">Germany</span>
+        <ul>
+          <li>Zwiebelkuchen mit Spargel (German onion cake with asparagus, caramelized onions, bacon, herbed goat cheese, savory custard)</li>
+          <li>Blossom Spritz (St. Germain Elderflower Liqueur, Sekt Sparkling Wine, soda water, fresh mint, lime)</li>
+        </ul>
+      </div>
+
+      <div class="booth-block new">
+        <strong>Sunshine Seasons</strong>
+        <span class="location-note">The Land</span>
+        <ul>
+          <li>Mickey-shaped Lemon-Violet Macaron</li>
+          <li>Orange Cream Milk Shake (non-alcoholic)</li>
+        </ul>
+      </div>
+
+      <div class="booth-block new">
+        <strong>Refreshment Station Hosted by Coca-Cola</strong>
+        <span class="location-note">near Test Track</span>
+        <ul>
+          <li>Coca-Cola Cherry Float (non-alcoholic)</li>
+          <li>Coca-Cola Cherry Float Zero Sugar (non-alcoholic)</li>
+        </ul>
+      </div>
+
+      <div class="booth-block new">
+        <strong>Block &amp; Hans</strong>
+        <span class="location-note">The American Adventure</span>
+        <ul>
+          <li>Frozen Wildberry Limeade (Minute Maid Limeade, Strawberry Smoothie, wildberry syrup, popping candy — non-alc and spirited with Tito's Vodka)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       RETURNING BOOTHS
+  ════════════════════════════════════════════════ -->
+  <div class="section-card">
+    <h2>Returning Booths — Full Item Breakdown</h2>
+
+    <!-- Florida Fresh -->
+    <h3>Florida Fresh</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Conch Fritters with Key Lime aïoli</td><td>Cubanito with mojo-marinated pork belly, ham, swiss, pickles &amp; mustard</td><td>Blackened Fish Slider with fried green tomato and Cajun rémoulade</td></tr>
+          <tr><td>Florida Strawberry Shortcake</td><td>Southern Tier Strawberry Shortcake Ale</td><td>Crooked Can Brewing Fiori di Limone Lager</td></tr>
+          <tr><td>Cucumber-Watermelon Slushy (non-alc)</td><td></td><td></td></tr>
+          <tr><td>Cucumber-Watermelon Slushy with gin</td><td></td><td></td></tr>
+          <tr><td>Orange Blossom Brewing Starlight Papaya Pilsner</td><td></td><td></td></tr>
+          <tr><td>Brewery Ommegang Melon Falls Watermelon Kolsch</td><td></td><td></td></tr>
+          <tr><td>Beer Flight</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EPCOT Farmers Feast -->
+    <h3>EPCOT Farmers Feast</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Early Bloom:</strong> Grilled Asparagus with pancetta, spring peas, frisée, truffle sherry vinaigrette, soft-poached egg</td><td><strong>Springtime menu:</strong> Grilled Peaches &amp; Burrata with prosciutto, lettuce, mint, sweet tea-lemon gastrique</td><td><strong>Springtime menu</strong> now uses former Summer Solstice items: Heirloom Tomatoes &amp; Fresh Mozzarella with shallot vinaigrette, croutons, pesto, basil, balsamic pearls</td></tr>
+          <tr><td><strong>Early Bloom:</strong> Scallop with spring pea risotto, lemon-beurre blanc, gremolata</td><td><strong>Springtime menu:</strong> Seared Pork Tenderloin with corn risotto &amp; roasted red pepper sauce</td><td><strong>Springtime menu:</strong> Grilled Beef Strip Loin with tomato risotto, beurre blanc, basil pesto</td></tr>
+          <tr><td><strong>Early Bloom:</strong> Blueberry Crumble Cake with blueberry-lemon soft-serve and compote</td><td><strong>Springtime menu:</strong> Warm Corn Cookie</td><td><strong>Springtime menu:</strong> Peach Cobbler with cinnamon gelato and streusel topping</td></tr>
+          <tr><td>Hibiscus Lemonade Cocktail</td><td><strong>Summer Solstice menu</strong> (entire season eliminated — booth ends May 10)</td><td>B Nektar Punk Lemonade (raspberry hard cider)</td></tr>
+          <tr><td>Frozen Lemon Tea with Bärenjäger Honey &amp; Bourbon</td><td>Gulf Stream Brewing Les Rêves de Monet</td><td>Playalinda Brewing Hibiscus Tangelo Hard Seltzer</td></tr>
+          <tr><td></td><td>B. Nektar Peach Tea Mead</td><td></td></tr>
+          <tr><td></td><td>Collective Arts Brewing Spring Pilsner</td><td></td></tr>
+          <tr><td></td><td>Beverage Flight</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- The Citrus Blossom -->
+    <h3>The Citrus Blossom</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Orange-Sesame Tempura Shrimp with orange-chile sauce</td><td>Citrus-baked Brie with marmalade, blueberries &amp; almonds</td><td>Cinnamon Beignets tossed in lemon sugar with lemon glaze &amp; honey mead-blueberry compote</td></tr>
+          <tr><td>Lumpia with plant-based pork, green papaya salad, yuzu sweet-and-sour <em>(plant-based)</em></td><td>3 Daughters Brewing Orange Blossom Cider</td><td>ACE Cider Orange Groves Hard Cider</td></tr>
+          <tr><td>Lemon Tart with lemon curd, blood orange fluid gel, plant-based meringue, raspberry powder <em>(plant-based)</em></td><td>BrewDog Yuzu Rice Lager</td><td>Central 28 Beer Company Grapefruit Pale Ale</td></tr>
+          <tr><td>Orange-Lemon Smoothie in Souvenir Orange Bird Sipper (non-alc)</td><td>Copperpoint Lemon Meringue Blonde</td><td>BrewDog Five Limes Cerveza</td></tr>
+          <tr><td>Key Lime Wine Slushy</td><td></td><td></td></tr>
+          <tr><td>Beverage Flight</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Beach Grub -->
+    <h3>Beach Grub</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Seafood Bake with shrimp, mussels, clams, andouille sausage, red potatoes, corn</td><td>S'mores Bar (brownie, chocolate, meringue, graham cracker)</td><td>Orange Cream Bar (vanilla bean-orange mousse, chocolate shell, marshmallow meringue)</td></tr>
+          <tr><td>Grilled Street Corn on the Cob <em>(plant-based)</em></td><td>Coconut Water (non-alcoholic)</td><td>Strawberry-Basil Lemonade (non-alcoholic)</td></tr>
+          <tr><td></td><td>Coconut Water with Siesta Key Toasted Coconut Rum</td><td>3 Daughters Brewing Key Lime Hard Cider</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Yacht Grub -->
+    <h3>Yacht Grub</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Trio of Dips and Chips (caramelized onion dip, whipped feta, pimento cheese, house-made chips)</td><td>Meat Assorti (beef bresaola, prosciutto, salami, arugula, pickled mustard seeds, tomato jam, truffle oil, ciabatta) — <em>separate item</em></td><td>Captain's Board (cheeses, cured meats, seasonal accompaniments) — <em>combined board</em></td></tr>
+          <tr><td></td><td>Assorted Artisanal Cheeses — <em>separate item</em></td><td>Limoncello-Basil Sparkling Cocktail</td></tr>
+          <tr><td></td><td>Elderflower Sparkling Cocktail</td><td></td></tr>
+          <tr><td></td><td>Lemon Sparkling Cocktail</td><td></td></tr>
+          <tr><td></td><td>Orange Sparkling Cocktail</td><td></td></tr>
+          <tr><td></td><td>Sparkling Cocktail Flight</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Swirled Showcase -->
+    <h3>Swirled Showcase</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Vanilla soft-serve in waffle cone</td><td>Peanut Butter soft-serve cone</td><td>Blueberry soft-serve cone</td></tr>
+          <tr><td>Lemon Sorbet in waffle cone <em>(plant-based)</em></td><td>Grape Jelly soft-serve cone</td><td>DOLE Whip Peach soft-serve cone <em>(plant-based)</em></td></tr>
+          <tr><td>Liquid Nitro Honey-Mascarpone Cheesecake (fresh honey, granulated honey, honey mead-blueberry compote)</td><td></td><td></td></tr>
+          <tr><td>Central 28 Beer Company Elderflower Pale Ale</td><td></td><td></td></tr>
+          <tr><td>Lemon-Elderflower Float (lemon sorbet &amp; Elderflower Pale Ale)</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BRUNCHCOT -->
+    <h3>BRUNCHCOT</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Avocado Toast with marinated tomatoes on ciabatta <em>(plant-based)</em></td><td>Plant-based Biscuit and Gravy (Impossible Sausage, pepper jelly)</td><td>French Toast with cinnamon cereal cream and caramel sauce</td></tr>
+          <tr><td>Shrimp and Grits <em>(recipe changed: 2025 had brown gravy &amp; sweet corn salsa; 2026 has tasso ham gravy, bell peppers, onions &amp; andouille)</em></td><td>Fried Cinnamon Roll Bites with cream cheese</td><td></td></tr>
+          <tr><td>Fruit Cereal Shake (vanilla soft-serve &amp; fruit-flavored breakfast cereal, non-alc)</td><td></td><td></td></tr>
+          <tr><td>3 Daughters Brewing Coffee Blonde Ale</td><td></td><td></td></tr>
+          <tr><td>Peach Bellini (sparkling wine and peach purée)</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Connections Eatery -->
+    <h3>Connections Eatery</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Hot Honey Chicken Sandwich with red cabbage slaw, pickles on brioche</td><td>Lemon-Lavender Baumkuchen</td><td>Pizza Bianca (roasted wild mushrooms, garlic cream, mozzarella, truffle oil, thyme)</td></tr>
+          <tr><td></td><td>Carrot Cake Liege Waffle</td><td>Garden Glimmer cocktail (Empress 1908 Gin, DOLE Pineapple Juice, lemon juice, almond syrup)</td></tr>
+          <tr><td></td><td>Blood Orange-Hibiscus Margarita</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- The Honey Bee-stro -->
+    <h3>The Honey Bee-stro</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Chicken and Waffles (crispy chicken, honey-bacon cornbread waffle, whipped honey butter, orange blossom honey)</td><td>Honey-glazed Cauliflower (honey-roasted carrot purée, wild rice, spring vegetables, honey-blistered grapes, sunflower brittle)</td><td>Honeycomb Bowl (herb quinoa, honey-whipped goat cheese, poached apples, hot honey cauliflower, honey tuile)</td></tr>
+          <tr><td>Frozen Peach Cobbler with streusel (non-alc)</td><td>Collective Arts Honey Lager</td><td>Brew Hub Nectar Bloom IPA</td></tr>
+          <tr><td>Florida Orange Groves Winery Orange Blossom Honey Wine</td><td></td><td></td></tr>
+          <tr><td>Frozen Peach Cobbler with blueberry vodka &amp; streusel</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pineapple Promenade -->
+    <h3>Pineapple Promenade</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Spicy Hot Dog with pineapple chutney and plantain chips</td><td>Playalinda Violet Lemonade Ale</td><td>Breckenridge Brewery Mountain Beach Tropical Session Sour</td></tr>
+          <tr><td>DOLE Whip Pineapple <em>(plant-based)</em></td><td>3 Daughters Pineapple Cider</td><td>Deschutes Brewery Tropical Fresh IPA</td></tr>
+          <tr><td>Frozen Dessert Violet Lemonade (non-alc)</td><td>Parish Brewing Greetings from the Bayou</td><td></td></tr>
+          <tr><td>Pineapple Float (DOLE Whip Pineapple &amp; Fanta Pineapple, non-alc)</td><td>Wicked Weed Perni Haze IPA</td><td></td></tr>
+          <tr><td>Florida Orange Groves Winery Sparkling Pineapple Wine</td><td>Beverage Flight</td><td></td></tr>
+          <tr><td>Pineapple-Mango Cream Float with Sōmrus Mango Cream Liqueur</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Jardin de Fiestas -->
+    <h3>Jardin de Fiestas <em style="font-weight:400;font-size:.85em;color:#6b7280">(nearly completely revamped)</em></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Craft Mexican Draft Beer</td><td>Taco de Camarón (tempura shrimp, dried hibiscus, chipotle aïoli)</td><td>Chilaquiles con Carne (corn tortillas in salsa ranchera, monterey jack, shaved rib-eye, poblano peppers, queso fresco, crema)</td></tr>
+          <tr><td></td><td>"Giant" Tostada de Carne (barbacoa, guacamole, jícama, pumpkin seeds, salsa macha)</td><td>Taco de Calamar (crispy calamari, fried garlic, pasilla aïoli, chives)</td></tr>
+          <tr><td></td><td>Chocoflan</td><td>Flan de la Abuela (hazelnut-chocolate flan, vanilla crème anglaise)</td></tr>
+          <tr><td></td><td>Oaxacan Sweetheart (Dos Hombres Reposado Mezcal, lemon, orange blossom honey, pollen salt)</td><td>Flower Power Margarita (Dulce Vida Blanco Tequila, orange-pineapple juice, blackcurrant-lavender liqueur, Empress 1908 Gin, rose petal salt rim)</td></tr>
+          <tr><td></td><td>Elderflower-Cucumber Margarita</td><td>Spicy Mango Margarita (tequila, mezcal, tamarindo liqueur, mango purée, lime-jalapeño juice, chili-lime salt rim)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Lan Yuan -->
+    <h3>Lan Yuan</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>House-made Cheesy Crab Wontons (cream cheese, celery, imitation crab)</td><td>Satay Beef Bao Bun (satay sauce)</td><td>Sha Cha Beef Bao Bun (pan-fried beef, red onion, jalapeño in Chinese sha cha peanut sauce)</td></tr>
+          <tr><td>Pan-fried Vegetable Dumplings (bok choy, carrot, shiitake mushroom, ginger, garlic, sesame)</td><td>Frozen Lucky Peach (whiskey, peach schnapps, oolong tea, simple syrup, lemon)</td><td>Tanghulu (skewer of strawberries &amp; grapes in candied sugar syrup)</td></tr>
+          <tr><td>Mango Bubble Tea (non-alc)</td><td></td><td>First Emperor cocktail (vodka, ginger kombucha, strawberry syrup, lime juice)</td></tr>
+          <tr><td>Brew Hub Honey Jasmine Lager</td><td></td><td></td></tr>
+          <tr><td>Dragon Dynasty (Baijiu, light rum, dragon fruit syrup, piña colada mix, soda water)</td><td></td><td></td></tr>
+          <tr><td>Tropical Moon (vodka, triple sec, passion fruit syrup, soda water, white boba pearls)</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Refreshment Outpost -->
+    <h3>Refreshment Outpost</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Seasonal Fruit Parfait with sweet chili sauce &amp; DOLE Whip Mango <em>(plant-based)</em></td><td>Plant-based Jamaican Beef Patty with spicy papaya syrup</td><td>Nigerian Beef Pie with papaya syrup</td></tr>
+          <tr><td>Boyd &amp; Blair Lavender Martini</td><td>Crooked Can Pollinators Paradise Lager</td><td>Soft-serve in Waffle Cone (Tangerine, DOLE Whip Mango)</td></tr>
+          <tr><td></td><td>Keel Farms Strawberry Hibiscus Cider</td><td>Ice Cream Float (tangerine soft-serve &amp; Barq's Red Creme Soda, non-alc)</td></tr>
+          <tr><td></td><td>Gulf Stream Humble Bumble</td><td>Carib Brewery Honeysuckle Hopped Wheat Ale</td></tr>
+          <tr><td></td><td></td><td>Keel Farms Spicy Watermelon Hard Cider</td></tr>
+          <tr><td></td><td></td><td>Ȯlōgy Brewing Co. Passion Fruit Dragon Slushhhhh</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bauernmarkt -->
+    <h3>Bauernmarkt: Farmer's Market</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Potato Pancakes with house-made applesauce <em>(plant-based)</em></td><td>Potato Pancakes with ham and onion</td><td>Gaffel Kölsch</td></tr>
+          <tr><td>Toasted Pretzel Bread with black forest ham and melted cheese</td><td>Bitburger Premium Pils</td><td></td></tr>
+          <tr><td>Warm Cheese Strudel with berry compote</td><td></td><td></td></tr>
+          <tr><td>Stiegl Brewery Raspberry Radler</td><td></td><td></td></tr>
+          <tr><td>Weihenstephaner Hefe Weissbier</td><td></td><td></td></tr>
+          <tr><td>Beer Flight</td><td></td><td></td></tr>
+          <tr><td>Apfelschaumwein (apple sparkling wine and apple liqueur)</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Primavera Kitchen -->
+    <h3>Primavera Kitchen <em style="font-weight:400;font-size:.85em;color:#6b7280">(completely new food menu)</em></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Peroni Pilsner</td><td>Insalata Arlecchino (tomato, melon, mozzarella, balsamic)</td><td>Insalata di Pasta (penne, apple, raisins, scallions, almonds, honey-lemon dressing)</td></tr>
+          <tr><td>Prosecco</td><td>Primavera Cacio Pepe e Gamberi (penne, shrimp, zucchini, peas, asparagus)</td><td>Arancini (risotto, beef ragoût, peas, parmesan, tomato sauce)</td></tr>
+          <tr><td>Moscato</td><td>Chocolate Dirt Cannoli</td><td>Raspberry Swirl Cheesecake (ricotta, raspberries, sweet whipped cream)</td></tr>
+          <tr><td>Italian-inspired Margarita with Blood Orange Liqueur <em>(name/branding updated to note Fabrizia)</em></td><td>Chianti</td><td>Sauvignon Blanc</td></tr>
+          <tr><td></td><td>Italian Sangria White</td><td>Italian Red Sangria</td></tr>
+          <tr><td></td><td>Caprese Cocktail (basil-infused vodka, balsamic-tomato juice, fresh mozzarella)</td><td>Elderflower Sparkling Cocktail (mint-infused elderflower liqueur, prosecco, blood orange soda)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Magnolia Terrace -->
+    <h3>Magnolia Terrace</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Grilled Gulf Oysters with andouille sausage butter and lemon</td><td>Traditional Muffuletta</td><td>Blackened Shrimp Po' Boy (lettuce, tomato, Cajun rémoulade)</td></tr>
+          <tr><td>Spicy Chicken Gumbo with andouille sausage &amp; rice</td><td>Wicked Weed Twist Belgian-Style White Ale</td><td>Southern Tier Brewing Company Early Bird Blackberry Lemonade Ale</td></tr>
+          <tr><td>Bananas Foster Bread Pudding with rum-caramel sauce</td><td>von Trapp Vienna Lager</td><td>Copperpoint Brewing Co. Sweet Tea Amber Lager</td></tr>
+          <tr><td>Spiced Rum Cocktail</td><td>Parish Ghost in the Machine Double IPA</td><td>Keel Farms King Cake Hard Cider</td></tr>
+          <tr><td>Beverage Flight</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Funnel Cake -->
+    <h3>Funnel Cake</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td><em>nothing stayed</em></td><td>Peaches 'n' Cream (vanilla ice cream, peaches, whipped cream, cobbler crumble, cinnamon-bourbon caramel)</td><td>Bananas Foster Funnel Cake (banana-chocolate chip ice cream, powdered sugar, whipped cream, rum-caramel sauce, banana-cinnamon sugar)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Hanami -->
+    <h3>Hanami</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Frushi (strawberry, pineapple, honeydew in coconut rice, coconut cream sauce, toasted coconut)</td><td>Steam Bun with vegetables and plant-based soy meat</td><td>Japanese Curry Bread (golden fried bread filled with Japanese vegetable curry)</td></tr>
+          <tr><td>Ramen Cup (cold noodle salad, fresh vegetables, grilled chicken, yuzu-soy vinaigrette, chili oil)</td><td>Takoyaki (spicy mayo, okonomiyaki sauce, crunch rice pearls)</td><td>Minute Maid Strawberry Lemonade with popping strawberry boba (non-alc)</td></tr>
+          <tr><td></td><td>Kyoto Boba (non-alc)</td><td>3 Daughters Brewing Strawberry Ichigo IPA</td></tr>
+          <tr><td></td><td>Japanese-inspired Pilsner with Cherry Blossom &amp; Ginger notes</td><td>Peach Momo Plum Wine</td></tr>
+          <tr><td></td><td>Shogun Sangria (sake, citrus, white cranberry juice)</td><td>Sakura Beauty Sake</td></tr>
+          <tr><td></td><td>Strawberry Nigori Sake</td><td>Lavender Lemonade (sake, lavender, Minute Maid Premium Lemonade)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tangierine Café -->
+    <h3>Tangierine Café</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Stone-baked Moroccan Bread with assorted dips</td><td>Grilled Kebabs format (carrot-chickpea salad, garlic aïoli)</td><td>Moroccan Wrap in three options: Chermoula Chicken, Moroccan-spiced Lamb, Plant-based Falafel</td></tr>
+          <tr><td>Orange Blossom-Saffron Cake</td><td>Keel Farms Pear Honeysuckle Cider</td><td>Keel Farms Hibiscus Honeycrisp Hard Cider</td></tr>
+          <tr><td>Pomegranate Mimosa</td><td>Blake's Tropical Mango Imperial Cider</td><td>Bold Rock Blueberry Lemon Hard Cider</td></tr>
+          <tr><td>Hard Cider Flight</td><td>3 Daughters Pomegranate Cider</td><td>Coppertail Brewing Co. Passion Fruit Basil Hard Cider</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- La Isla Fresca -->
+    <h3>La Isla Fresca</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Jamaican Jerk Chicken with pigeon pea rice, roasted sweet plantains, cinnamon butter</td><td>Seafood Ceviche (shrimp, scallops, fish, citrus, radish, chulpe)</td><td>Ceviche (shrimp, mango, avocado, cucumber, lime, cilantro, tomato, jalapeño, plantain chips)</td></tr>
+          <tr><td>Coconut-Chocolate Flancocho / Flan Bizcocho <em>(plant-based; same item, name slightly adjusted)</em></td><td>Woodchuck Chuck's Imperials Wild Tropics Cider</td><td>Bold Rock Paradise Orchard Hard Cider</td></tr>
+          <tr><td>Citrus Slushy (non-alc)</td><td></td><td></td></tr>
+          <tr><td>Florida Orange Groves Winery Hurricane Class 5 Tropical Sangria</td><td></td><td></td></tr>
+          <tr><td>Citrus Slushy with Don Q Limón Rum</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Fleur de Lys -->
+    <h3>Fleur de Lys</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Croissant au Fromage de Chèvre, Herbes et Ail Rôtie (goat cheese, herbs, roasted garlic)</td><td>Gnocchis Provençal with duck confit, rosemary sauce &amp; herbs</td><td>Canard Confit with rosemary-mushroom sauce &amp; herbed polenta corn cake</td></tr>
+          <tr><td>Beignet Caramélisé with vanilla cream and caramel fleur de sel glaze</td><td>Gâteau au Chocolat chaud à la Noisette (Warm Chocolate-Hazelnut Cake)</td><td>Tarte Aux Oignons Caramelises (caramelized onions on flaky pastry with bacon)</td></tr>
+          <tr><td>Kronenbourg 1664 Blanc</td><td>Sparkling Cantaloupe-Melon Cocktail</td><td>André Brunel Côtes du Rhône Blend</td></tr>
+          <tr><td>La Vie en Rose Frozen Slush (vodka, Grey Goose L'Orange, St-Germain, cranberry juices)</td><td>R. Dutoit Chardonnay</td><td>Guillaume Touton Brut de Peche</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Trowel & Trellis -->
+    <h3>Trowel &amp; Trellis</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Chocolate Mousse Terrarium with matcha crumb and chocolate soil</td><td>Soy-glazed Pork Sticky Ribs <em>(replaced by new preparation)</em></td><td>Miso Cola-glazed Sticky Pork Ribs with spicy pickled peppers and peanuts</td></tr>
+          <tr><td>Botanical Slush with Cruzan Mango Rum <em>(non-alc base renamed from "Tropical Punch" to "Botanical Slush")</em></td><td>Plant-based Farmhouse Meatball (Impossible Beef, Lentil Bread, spinach, marinated vegetables, herb aïoli)</td><td>Garden Vegetable Flatbread (Boursin Crumbles, roasted vegetables, arugula salad)</td></tr>
+          <tr><td></td><td>Ȯlōgy Brewing Spa Goggles Cucumber Lime Gose</td><td>Keel Farms Garden Bloom Hard Cider</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Northern Bloom -->
+    <h3>Northern Bloom</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Seared Scallops with french green beans, marble potatoes, bacon vinaigrette</td><td>Stone Brewing Delicious IPA</td><td>Collective Arts Brewing Garden Shed Lager</td></tr>
+          <tr><td>Beef Tenderloin Tips with mushroom bordelaise, whipped potatoes, garden vegetables</td><td>Collective Arts Brewing Hazy State Session IPA</td><td>Collective Arts Brewing Guava Gose</td></tr>
+          <tr><td>Chocolate-Maple Whiskey Cake</td><td></td><td></td></tr>
+          <tr><td>Collective Arts Brewing Grapefruit Lime Sour</td><td></td><td></td></tr>
+          <tr><td>Florida Orange Groves Winery Sparkling Blackberry Wine</td><td></td><td></td></tr>
+          <tr><td>Beer Flight</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Canada Popcorn Cart -->
+    <h3>Canada Popcorn Cart <em style="font-weight:400;font-size:.85em;color:#6b7280">(formerly "Popcorn in Canada")</em></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td><em>Spirit brand Canadian Club Whisky stayed</em></td><td>Peach Smash (Canadian Club Whisky, lemon, peach purée, ginger)</td><td>Blueberry-Ginger Smash (Canadian Club Whisky, blueberry, lemon, ginger)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- UK Beer Cart -->
+    <h3>UK Beer Cart → Yorkshire County Fish and Chips</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td><em>Fords Gin remains the featured spirit</em></td><td>Blackcurrant Gin Cocktail (Fords Gin, lemon juice, blackcurrant syrup, cucumber syrup)</td><td>English Garden cocktail (Fords Gin, St-Germain Elderflower Liqueur, lemonades, apple juice, cucumber) — now served at Yorkshire County</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Joffrey's -->
+    <h3>Joffrey's Coffee &amp; Tea Company</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stayed</th><th>Gone in 2026</th><th>New in 2026</th></tr></thead>
+        <tbody>
+          <tr><td><em>none</em></td><td>Iced Pistachio-Banana Breeze Latte</td><td>Very Berry Matcha Latte (milk, strawberry syrup, matcha, whipped cream — non-alc and spirited with Baileys Irish Cream)</td></tr>
+          <tr><td></td><td>Iced Strawberry Island Latte</td><td>Dubai Chocolate Frozen Cappuccino (pistachio syrup, dark chocolate sauce, whipped cream — non-alc and spirited with Kahlúa)</td></tr>
+          <tr><td></td><td>Iced White Chocolate-Mango Latte</td><td></td></tr>
+          <tr><td></td><td>Iced Berries 'n' Cream Latte</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /section-card -->
+
+  <!-- Sources -->
+  <div class="sources">
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://www.disneyfoodblog.com/2025/02/25/full-menus-announced-for-the-2025-epcot-flower-and-garden-festival/" target="_blank">2025 Full Menus Announced – Disney Food Blog</a></li>
+      <li><a href="https://www.disneyfoodblog.com/2025-epcot-flower-and-garden-festival-booth-menus-and-food-photos/" target="_blank">2025 EPCOT Flower and Garden Festival Booth Menus and Food Photos – Disney Food Blog</a></li>
+      <li><a href="https://www.disneyfoodblog.com/2025-epcot-flower-and-garden-festival-refreshment-port/" target="_blank">2025 Refreshment Port – Disney Food Blog</a></li>
+      <li><a href="https://disneyparksblog.com/wdw/disney-eats-epcot-international-flower-and-garden-festival-foodie-guide-2026/" target="_blank">2026 EPCOT Flower &amp; Garden Festival Foodie Guide – Disney Parks Blog</a></li>
+      <li><a href="https://www.themainstreetmouse.com/2026/02/19/a-complete-guide-to-the-2026-epcot-international-flower-garden-festival-food-booths/" target="_blank">2026 Complete Guide to Food Booths – The Main Street Mouse</a></li>
+      <li><a href="https://www.disneyfoodblog.com/epcot-flower-and-garden-festival-booth-menus-and-food-photos/" target="_blank">2026 EPCOT Flower and Garden Festival Booth Menus – Disney Food Blog</a></li>
+    </ul>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>
