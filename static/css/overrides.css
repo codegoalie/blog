@@ -171,10 +171,34 @@ th {
   color: #e0e0e0;
 }
 
-blockquote {
-  background-color: #2d2d2d;
-  border-left: 4px solid hsl(140, 69%, 65%);
+blockquote,
+.content blockquote {
+  background: #2d2d2d !important;
+  border-left: 4px solid hsl(140, 69%, 65%) !important;
+  color: #e0e0e0 !important;
+}
+
+.content blockquote p,
+.content blockquote li {
   color: #e0e0e0;
+}
+
+blockquote ul,
+.content blockquote ul {
+  margin-left: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 0.5em;
+}
+
+blockquote li,
+.content blockquote li {
+  list-style: none;
+  padding-left: 0;
+}
+
+blockquote li::before,
+.content blockquote li::before {
+  content: '\2014\00a0';
 }
 
 pre,

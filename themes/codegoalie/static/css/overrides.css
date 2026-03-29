@@ -165,7 +165,8 @@ th {
   color: #e0e0e0;
 }
 
-blockquote {
+blockquote,
+.content blockquote {
   background-color: #2d2d2d;
   border-left: 4px solid hsl(140, 69%, 65%);
   color: #e0e0e0;
