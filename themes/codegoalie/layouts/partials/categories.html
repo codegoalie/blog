@@ -7,7 +7,7 @@
   {{ $baseurl := .Site.BaseURL }}
   {{ range $key, $value := .Site.Taxonomies.categories }}
     <li class="cat-item">
-      <a href="{{ $baseurl }}/categories/{{ $key | urlize }}">{{ $key | title }}</a>
+      <a href="{{ $baseurl }}/categories/{{ $key | urlize }}">{{ $key }}</a>
     </li>
   {{ end }}
   </ul>
