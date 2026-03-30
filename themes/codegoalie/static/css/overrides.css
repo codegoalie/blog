@@ -191,4 +191,11 @@ code {
 .footer {
   background-color: #1a1a1a;
   color: #e0e0e0;
+  font-family: 'Overpass Mono', monospace;
+}
+
+.footer .content p {
+  margin-bottom: 0.1rem !important;
+  line-height: 1.4 !important;
+  font-family: 'Overpass Mono', monospace !important;
 }
