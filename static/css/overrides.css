@@ -227,4 +227,16 @@ code {
 .footer {
   background-color: #1a1a1a;
   color: #e0e0e0;
+  font-family: 'Overpass Mono', monospace;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+.footer .content p {
+  font-family: 'Overpass Mono', monospace;
+  margin-bottom: 0.1rem !important;
+  line-height: 1.4 !important;
+  font-size: 0.9rem !important;
+  text-align: left !important;
 }
