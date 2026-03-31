@@ -228,6 +228,7 @@ code {
   background-color: #1a1a1a;
   color: #e0e0e0;
   font-family: 'Overpass Mono', monospace;
+  padding-top: 0;
   padding-left: 0;
   padding-right: 0;
 }
@@ -237,6 +238,11 @@ code {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.profile-content {
+  padding-top: 1rem;
+  line-height: 0.8;
 }
 
 .footer .content p {
