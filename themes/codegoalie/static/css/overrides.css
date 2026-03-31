@@ -38,6 +38,13 @@ textarea {
   max-width: 1200px;
 }
 
+@media screen and (min-width: 980px) and (max-width: 1199px) {
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 /* Dark mode overrides for various elements */
 .title,
 .subtitle {
