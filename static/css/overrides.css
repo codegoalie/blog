@@ -233,6 +233,12 @@ code {
 }
 
 
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .footer .content p {
   font-family: 'Overpass Mono', monospace;
   margin-bottom: 0.1rem !important;
