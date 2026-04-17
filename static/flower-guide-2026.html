@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F&G 2026 — My Guide</title>
+  <style>
+    :root {
+      --green-dark:  #2d6a4f;
+      --green-mid:   #40916c;
+      --green-light: #d8f3dc;
+      --green-pale:  #f0faf3;
+      --gold:        #b07d28;
+      --gold-light:  #fef9ec;
+      --red:         #c1121f;
+      --bg:          #f4f8f5;
+      --card:        #ffffff;
+      --text:        #1a1a2e;
+      --muted:       #6b7280;
+      --border:      #d1e8d9;
+      --radius:      14px;
+      --shadow:      0 2px 12px rgba(0,0,0,.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 3rem;
+    }
+
+    /* ── Sticky header ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green-dark);
+      color: #fff;
+      padding: .75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+
+    .header-left h1 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .progress-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: .25rem;
+    }
+
+    .progress-bar-track {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,.3);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: #74e8a4;
+      border-radius: 99px;
+      transition: width .3s ease;
+    }
+
+    .progress-label {
+      font-size: .75rem;
+      opacity: .85;
+      white-space: nowrap;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .4rem;
+    }
+
+    .btn-hide {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 600;
+      padding: .35rem .75rem;
+      border-radius: 99px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s;
+      min-height: 36px;
+    }
+    .btn-hide:hover { background: rgba(255,255,255,.25); }
+    .btn-hide.active {
+      background: #74e8a4;
+      border-color: #74e8a4;
+      color: var(--green-dark);
+    }
+
+    .btn-reset {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.55);
+      font-size: .7rem;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+    }
+    .btn-reset:hover { color: rgba(255,255,255,.8); }
+
+    /* ── Page body ── */
+    .page {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 1rem 1rem 0;
+    }
+
+    /* ── Section headings ── */
+    .section-heading {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin: 1.5rem 0 .6rem;
+    }
+
+    /* ── Booth card ── */
+    .booth-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: .85rem;
+      overflow: hidden;
+    }
+
+    .booth-header {
+      background: var(--green-light);
+      padding: .65rem 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .booth-flag {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .booth-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .booth-country {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    /* ── Item list ── */
+    .item-list {
+      list-style: none;
+    }
+
+    .item-row {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1rem;
+      border-top: 1px solid var(--border);
+      transition: opacity .2s;
+    }
+
+    .item-row:first-child {
+      border-top: none;
+    }
+
+    .item-btn {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--green-mid);
+      background: transparent;
+      color: var(--green-mid);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+
+    .item-btn:hover {
+      background: var(--green-light);
+    }
+
+    .item-btn.tried {
+      background: var(--green-mid);
+      border-color: var(--green-mid);
+      color: #fff;
+    }
+
+    .item-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .item-name {
+      font-size: .95rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .item-desc {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: .15rem;
+      line-height: 1.4;
+    }
+
+    .item-badge {
+      flex-shrink: 0;
+      font-size: .65rem;
+      font-weight: 700;
+      padding: .15rem .45rem;
+      border-radius: 99px;
+      letter-spacing: .05em;
+    }
+
+    .badge-maybe {
+      background: var(--gold-light);
+      color: var(--gold);
+      border: 1px solid #e8c96a;
+    }
+
+    .badge-note {
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+
+    /* ── Tried state ── */
+    .item-row.tried-row .item-name {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+    .item-row.tried-row .item-desc {
+      text-decoration: line-through;
+      opacity: .6;
+    }
+    .item-row.tried-row {
+      opacity: .65;
+    }
+
+    /* ── Hidden tried items ── */
+    .hide-tried .item-row.tried-row {
+      display: none;
+    }
+
+    /* ── Empty booth (all tried + hidden) ── */
+    .booth-card.all-done-hidden {
+      display: none;
+    }
+
+    /* ── Cider sub-list ── */
+    .sub-list {
+      margin-top: .25rem;
+      padding-left: 1rem;
+      list-style: disc;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <h1>F&amp;G 2026 — My Picks</h1>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <span class="progress-label" id="progressLabel">0 of 0 tried</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-hide" id="btnHide">Hide Tried</button>
+    <button class="btn-reset" id="btnReset">Reset all</button>
+  </div>
+</header>
+
+<main class="page" id="page">
+
+  <!-- ═══════════════════════════════════════════════
+       WORLD SHOWCASE
+  ═══════════════════════════════════════════════ -->
+  <div class="section-heading">World Showcase</div>
+
+  <!-- 1. Mexico — Jardin de Fiestas -->
+  <div class="booth-card" data-booth="jardin">
+    <div class="booth-header">
+      <span class="booth-flag">🇲🇽</span>
+      <span class="booth-name">Jardin de Fiestas</span>
+      <span class="booth-country">Mexico</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="jardin-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Chilaquiles con Carne</div>
+          <div class="item-desc">corn tortillas in salsa ranchera, monterey jack, shaved rib-eye, poblano peppers, queso fresco, crema</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="jardin-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Spicy Mango Margarita</div>
+          <div class="item-desc">tequila, mezcal, tamarindo liqueur, mango purée, lime-jalapeño juice, chili-lime salt rim</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 2. China — Lan Yuan -->
+  <div class="booth-card" data-booth="lanyuan">
+    <div class="booth-header">
+      <span class="booth-flag">🇨🇳</span>
+      <span class="booth-name">Lan Yuan</span>
+      <span class="booth-country">China</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="lanyuan-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Pan-fried Vegetable Dumplings</div>
+          <div class="item-desc">bok choy, carrot, shiitake mushroom, ginger, garlic, sesame</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="lanyuan-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Sha Cha Beef Bao Bun</div>
+          <div class="item-desc">pan-fried beef, red onion, jalapeño in Chinese sha cha peanut sauce</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="lanyuan-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Tanghulu</div>
+          <div class="item-desc">skewer of strawberries &amp; grapes in candied sugar syrup</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="lanyuan-3">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">First Emperor cocktail</div>
+          <div class="item-desc">vodka, ginger kombucha, strawberry syrup, lime juice</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 3. Germany — Bauernmarkt -->
+  <div class="booth-card" data-booth="bauernmarkt">
+    <div class="booth-header">
+      <span class="booth-flag">🇩🇪</span>
+      <span class="booth-name">Bauernmarkt: Farmer's Market</span>
+      <span class="booth-country">Germany</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="bauernmarkt-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Potato Pancakes</div>
+          <div class="item-desc">with house-made applesauce (plant-based)</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="bauernmarkt-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Toasted Pretzel Bread with Ham</div>
+          <div class="item-desc">black forest ham and melted cheese</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="bauernmarkt-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Apfelschaumwein</div>
+          <div class="item-desc">apple sparkling wine and apple liqueur</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 4. Italy — Primavera Kitchen -->
+  <div class="booth-card" data-booth="primavera">
+    <div class="booth-header">
+      <span class="booth-flag">🇮🇹</span>
+      <span class="booth-name">Primavera Kitchen</span>
+      <span class="booth-country">Italy</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="primavera-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Insalata di Pasta</div>
+          <div class="item-desc">penne, apple, raisins, scallions, almonds, honey-lemon dressing</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="primavera-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Italian Red Sangria</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="primavera-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Elderflower Sparkling Cocktail</div>
+          <div class="item-desc">mint-infused elderflower liqueur, prosecco, blood orange soda</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. The American Adventure — Magnolia Terrace -->
+  <div class="booth-card" data-booth="magnolia">
+    <div class="booth-header">
+      <span class="booth-flag">🇺🇸</span>
+      <span class="booth-name">Magnolia Terrace</span>
+      <span class="booth-country">The American Adventure</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="magnolia-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Keel Farms King Cake Hard Cider</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="magnolia-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Spicy Chicken Gumbo</div>
+          <div class="item-desc">with andouille sausage &amp; rice</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 6. Japan — Hanami -->
+  <div class="booth-card" data-booth="hanami">
+    <div class="booth-header">
+      <span class="booth-flag">🇯🇵</span>
+      <span class="booth-name">Hanami</span>
+      <span class="booth-country">Japan</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="hanami-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Frushi</div>
+          <div class="item-desc">strawberry, pineapple, honeydew in coconut rice, coconut cream sauce, toasted coconut</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="hanami-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">3 Daughters Brewing Strawberry Ichigo IPA</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="hanami-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Sakura Beauty Sake</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 7. Morocco — Tangerine Café -->
+  <div class="booth-card" data-booth="tangerine">
+    <div class="booth-header">
+      <span class="booth-flag">🇲🇦</span>
+      <span class="booth-name">Tangerine Café</span>
+      <span class="booth-country">Morocco</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="tangerine-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Cider Flight</div>
+          <ul class="sub-list">
+            <li>Keel Farms Hibiscus Honeycrisp Hard Cider</li>
+            <li>Bold Rock Blueberry Lemon Hard Cider</li>
+            <li>Coppertail Brewing Co. Passion Fruit Basil Hard Cider</li>
+          </ul>
+        </div>
+      </li>
+      <li class="item-row" data-item="tangerine-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Moroccan Wrap</div>
+          <div class="item-desc">three options: Chermoula Chicken, Moroccan-spiced Lamb, Plant-based Falafel</div>
+        </div>
+        <span class="item-badge badge-maybe">Maybe?</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 8. Canada — Popcorn Cart -->
+  <div class="booth-card" data-booth="canada">
+    <div class="booth-header">
+      <span class="booth-flag">🇨🇦</span>
+      <span class="booth-name">Canada Popcorn Cart</span>
+      <span class="booth-country">Canada</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="canada-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Blueberry-Ginger Smash</div>
+          <div class="item-desc">Canadian Club Whisky, blueberry, lemon, ginger</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════
+       OTHER PARK BOOTHS
+  ═══════════════════════════════════════════════ -->
+  <div class="section-heading">Other Park Booths</div>
+
+  <!-- Nectar -->
+  <div class="booth-card" data-booth="nectar">
+    <div class="booth-header">
+      <span class="booth-flag">🌿</span>
+      <span class="booth-name">Nectar hosted by AdventHealth</span>
+      <span class="booth-country">World Nature / Land Kiosk</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="nectar-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Coconut Panna Cotta</div>
+          <div class="item-desc">cherry gelée, matcha crumb, citrus cookie, plant-based meringue, flower confetti (plant-based)</div>
+        </div>
+        <span class="item-badge badge-note">Dairy free?</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Beach Grub -->
+  <div class="booth-card" data-booth="beach">
+    <div class="booth-header">
+      <span class="booth-flag">🏖️</span>
+      <span class="booth-name">Beach Grub</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="beach-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Orange Cream Bar</div>
+          <div class="item-desc">vanilla bean-orange mousse, chocolate shell, marshmallow meringue</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="beach-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">3 Daughters Brewing Key Lime Hard Cider</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Yacht Grub -->
+  <div class="booth-card" data-booth="yacht">
+    <div class="booth-header">
+      <span class="booth-flag">⛵</span>
+      <span class="booth-name">Yacht Grub</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="yacht-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Limoncello-Basil Sparkling Cocktail</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Swirled Showcase -->
+  <div class="booth-card" data-booth="swirled">
+    <div class="booth-header">
+      <span class="booth-flag">🍦</span>
+      <span class="booth-name">Swirled Showcase</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="swirled-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Liquid Nitro Honey-Mascarpone Cheesecake</div>
+          <div class="item-desc">fresh honey, granulated honey, honey mead-blueberry compote</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="swirled-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">DOLE Whip Peach soft-serve cone</div>
+          <div class="item-desc">plant-based</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Connections Eatery -->
+  <div class="booth-card" data-booth="connections">
+    <div class="booth-header">
+      <span class="booth-flag">🍕</span>
+      <span class="booth-name">Connections Eatery</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="connections-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Hot Honey Chicken Sandwich</div>
+          <div class="item-desc">red cabbage slaw, pickles on brioche</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="connections-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Pizza Bianca</div>
+          <div class="item-desc">roasted wild mushrooms, garlic cream, mozzarella, truffle oil, thyme</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="connections-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Garden Glimmer cocktail</div>
+          <div class="item-desc">Empress 1908 Gin, DOLE Pineapple Juice, lemon juice, almond syrup</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- The Honey Bee-stro -->
+  <div class="booth-card" data-booth="honeybee">
+    <div class="booth-header">
+      <span class="booth-flag">🐝</span>
+      <span class="booth-name">The Honey Bee-stro</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="honeybee-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Honeycomb Bowl</div>
+          <div class="item-desc">herb quinoa, honey-whipped goat cheese, poached apples, hot honey cauliflower, honey tuile</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="honeybee-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Brew Hub Nectar Bloom IPA</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="honeybee-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Florida Orange Groves Winery Orange Blossom Honey Wine</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Pineapple Promenade -->
+  <div class="booth-card" data-booth="pineapple">
+    <div class="booth-header">
+      <span class="booth-flag">🍍</span>
+      <span class="booth-name">Pineapple Promenade</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="pineapple-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Spicy Hot Dog</div>
+          <div class="item-desc">with pineapple chutney and plantain chips</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="pineapple-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Florida Orange Groves Winery Sparkling Pineapple Wine</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="pineapple-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Deschutes Brewery Tropical Fresh IPA</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- La Isla Fresca -->
+  <div class="booth-card" data-booth="laisla">
+    <div class="booth-header">
+      <span class="booth-flag">🌴</span>
+      <span class="booth-name">La Isla Fresca</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="laisla-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Jamaican Jerk Chicken</div>
+          <div class="item-desc">pigeon pea rice, roasted sweet plantains, cinnamon butter</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="laisla-1">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Ceviche</div>
+          <div class="item-desc">shrimp, mango, avocado, cucumber, lime, cilantro, tomato, jalapeño, plantain chips</div>
+        </div>
+      </li>
+      <li class="item-row" data-item="laisla-2">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Citrus Slushy with Don Q Limón Rum</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Trowel & Trellis -->
+  <div class="booth-card" data-booth="trowel">
+    <div class="booth-header">
+      <span class="booth-flag">🌱</span>
+      <span class="booth-name">Trowel &amp; Trellis</span>
+    </div>
+    <ul class="item-list">
+      <li class="item-row" data-item="trowel-0">
+        <button class="item-btn" aria-label="Mark as tried"></button>
+        <div class="item-text">
+          <div class="item-name">Miso Cola-glazed Sticky Pork Ribs</div>
+          <div class="item-desc">with spicy pickled peppers and peanuts</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</main>
+
+<script>
+  const STORAGE_KEY = 'fg2026_tried';
+
+  // ── Load saved state ──────────────────────────────
+  function loadTried() {
+    try {
+      return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+    } catch { return new Set(); }
+  }
+
+  function saveTried(set) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...set]));
+  }
+
+  const tried = loadTried();
+
+  // ── DOM refs ──────────────────────────────────────
+  const page        = document.getElementById('page');
+  const btnHide     = document.getElementById('btnHide');
+  const btnReset    = document.getElementById('btnReset');
+  const progressFill  = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+
+  const allRows = [...document.querySelectorAll('.item-row')];
+  const allCards = [...document.querySelectorAll('.booth-card')];
+  let hidingTried = false;
+
+  // ── Apply initial tried state ─────────────────────
+  allRows.forEach(row => {
+    const key = row.dataset.item;
+    const btn = row.querySelector('.item-btn');
+    if (tried.has(key)) {
+      row.classList.add('tried-row');
+      btn.classList.add('tried');
+      btn.textContent = '✓';
+    }
+    btn.addEventListener('click', () => toggleItem(row, key, btn));
+  });
+
+  updateProgress();
+  updateCardVisibility();
+
+  // ── Toggle one item ───────────────────────────────
+  function toggleItem(row, key, btn) {
+    if (tried.has(key)) {
+      tried.delete(key);
+      row.classList.remove('tried-row');
+      btn.classList.remove('tried');
+      btn.textContent = '';
+    } else {
+      tried.add(key);
+      row.classList.add('tried-row');
+      btn.classList.add('tried');
+      btn.textContent = '✓';
+    }
+    saveTried(tried);
+    updateProgress();
+    updateCardVisibility();
+  }
+
+  // ── Progress bar ──────────────────────────────────
+  function updateProgress() {
+    const total = allRows.length;
+    const done  = tried.size;
+    const pct   = total ? Math.round((done / total) * 100) : 0;
+    progressFill.style.width  = pct + '%';
+    progressLabel.textContent = `${done} of ${total} tried`;
+  }
+
+  // ── Hide/show tried ───────────────────────────────
+  btnHide.addEventListener('click', () => {
+    hidingTried = !hidingTried;
+    page.classList.toggle('hide-tried', hidingTried);
+    btnHide.textContent = hidingTried ? 'Show All' : 'Hide Tried';
+    btnHide.classList.toggle('active', hidingTried);
+    updateCardVisibility();
+  });
+
+  function updateCardVisibility() {
+    if (!hidingTried) {
+      allCards.forEach(c => c.classList.remove('all-done-hidden'));
+      return;
+    }
+    allCards.forEach(card => {
+      const rows = [...card.querySelectorAll('.item-row')];
+      const allTried = rows.every(r => r.classList.contains('tried-row'));
+      card.classList.toggle('all-done-hidden', allTried);
+    });
+  }
+
+  // ── Reset ─────────────────────────────────────────
+  btnReset.addEventListener('click', () => {
+    if (!confirm('Mark everything as un-tried?')) return;
+    tried.clear();
+    saveTried(tried);
+    allRows.forEach(row => {
+      row.classList.remove('tried-row');
+      const btn = row.querySelector('.item-btn');
+      btn.classList.remove('tried');
+      btn.textContent = '';
+    });
+    updateProgress();
+    updateCardVisibility();
+  });
+</script>
+</body>
+</html>
