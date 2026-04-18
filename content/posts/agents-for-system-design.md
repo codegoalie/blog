@@ -26,12 +26,12 @@ This is a general principle for all if not close to all interactions with an
 agent and LLM. It's not a magic oracle, even if it genuinely feels like it
 sometimes. It can't read your mind. It doesn't have the context of your company,
 team, feature, past mistakes, etc. It wasn't at the last all-hands meeting to
-absorb some of that new initiate from the leadership team. It wasn't a part of
+absorb some of that new initiative from the leadership team. It wasn't a part of
 that ad-hoc conversation last week where we got clarity on an upcoming API
 interaction.
 
 It doesn't need to know that. It shouldn't know that. It's your job to determine
-what it should know and in order to do that. You need to determine what you want
+what it should know, and in order to do that, you need to determine what you want
 it to do first. Every time you open up your agent, you should know what you want
 from it and when you'll be able to exit it (ctrl+d ctrl+d).
 
@@ -42,7 +42,7 @@ of formatting and process around this typically in companies. I ignore most of
 that here. I want the agent to produce a document which describes at a high
 level how this new thing is going to work.
 
-That last sentence pretty much the functional part of my initial prompt. The key
+That last sentence is pretty much the functional part of my initial prompt. The key
 here is know what you want before you start:
 
 - A document defining something in a 3rd party system (Notion, Linear docs,
@@ -58,8 +58,8 @@ wildly in the air is not the best way to dig a hole.
 ## Provide the load bearing walls
 
 This is a recent insight that I realized I'd been doing naturally, but I
-articulated it to a colleague recently and actually inspired this whole post.
-This 5 second version is that if you're building a tent with the help of an
+articulated it to a colleague recently and it actually inspired this whole post.
+This 5-second version is that if you're building a tent with the help of an
 agent, you need to bring the tent poles. It can build the waterproof and
 functional covering. It can put in a door with a 2 sided zipper. But if you
 don't bring the poles, it'll just be a pile of fabric on the floor.
@@ -71,13 +71,13 @@ makes your tent yours.
 
 A good recipe for this is to start with what you have. Talk about what you need.
 Then be explicit about what you want. A while back, I had an agent research the
-Epcot Flower & Garden festival menus for this year comparing; first a markdown
+Epcot Flower & Garden festival menus for this year, comparing first a markdown
 file then [a static HTML file](https://codegoalie.com/flower-2026.html). My wife
 and I went through the menus and picked the items we wanted to be sure to try.
 Now, I wanted to combine the two -- Well, wait. Here's the exact prompt I used:
 
 ```
-❯ I have a full overview of the 2026 Epcot Flower & Garden fastival in the
+❯ I have a full overview of the 2026 Epcot Flower & Garden festival in the
   2026.[md|html] files. I've gone through them and noted my favorites in
   2026-notes.md. I'd like to come up with a useful and intuitive guide to use
   while I'm in Epcot to make sure I don't miss these choices. We'll be going
@@ -111,15 +111,15 @@ beforehand so that you can evaluate it when the agent produces the artifact.
 ## Cutthroat revisions
 
 Since each phase feeds directly into another increase in specificity, be
-ruthless in your revisions earlier than later. I use the same working model as I
+ruthless in your revisions earlier rather than later. I use the same working model as I
 do for code reviews: if this isn't what you would have done, say something. It
 will only get worse from here. The models are very good at making things sound
 plausible and correct. That's exactly what they do, in fact. "The new
 multiplication function can live in the addition package since they are both
 math." Nope. Maybe you want to rename that package to newmath, or put
 multiplication in its own package. You need to make the call now and update the
-plan. It's a once sentence change in the plan, but from here on out it gets more
-ingrained (maybe AGENTS.md updates to include something like "All  math features
+plan. It's a one sentence change in the plan, but from here on out it gets more
+ingrained (maybe AGENTS.md updates to include something like "All math features
 are implemented in the `addition` package" 😱)
 
 Functionally, I like to have the agent make the changes usually in the same
