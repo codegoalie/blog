@@ -4,7 +4,9 @@ SYSTEMD ?= /etc/systemd/system
 .PHONY: install enable disable uninstall deps
 
 deps:
-	apt-get install -y python3-yaml || pip3 install pyyaml
+	@python3 -c 'import sys, zoneinfo; assert sys.version_info >= (3, 9)' \
+		&& echo "OK: stdlib-only (Python >= 3.9 with tzdata)." \
+		|| echo "Need Python >= 3.9 and timezone data (apt install tzdata)."
 
 install:
 	install -d $(PREFIX)

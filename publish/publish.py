@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Publish Obsidian notes from the vault's Blog/Publish folder to a Hugo blog."""
-import os, re, sys, time, shutil, subprocess, datetime, pathlib
-import yaml
+import re, sys, time, shutil, subprocess, datetime, pathlib
+from zoneinfo import ZoneInfo
 
 # ---- config ---------------------------------------------------------------
 VAULT_ROOT    = pathlib.Path("/home/chris/vault")
@@ -11,6 +11,7 @@ BLOG_REPO     = pathlib.Path("/home/chris/blog")
 CONTENT_DIR   = BLOG_REPO / "content" / "posts"
 GIT_BRANCH    = "main"
 POST_BASE_URL = "/posts"          # Hugo permalink base for content/posts/<slug>/
+TIMEZONE      = ZoneInfo("America/New_York")   # for dates derived from file mtime
 # where to look for embedded images (first match wins; whole vault as fallback)
 ATTACHMENT_DIRS = [VAULT_ROOT / "Attachments", VAULT_ROOT]
 # ---------------------------------------------------------------------------
@@ -27,15 +28,75 @@ def slugify(s):
     return s.strip("-") or "post"
 
 
+def _scalar(s):
+    """Strip surrounding quotes from a frontmatter scalar; everything is a str."""
+    s = s.strip()
+    if len(s) >= 2 and s[0] == s[-1] and s[0] in "\"'":
+        return s[1:-1]
+    return s
+
+
+def _split_inline(s):
+    """Split an inline list body (`a, "b, c", d`) on top-level commas."""
+    out, cur, quote = [], "", None
+    for ch in s:
+        if quote:
+            cur += ch
+            if ch == quote:
+                quote = None
+        elif ch in "\"'":
+            quote = ch
+            cur += ch
+        elif ch == ",":
+            out.append(cur)
+            cur = ""
+        else:
+            cur += ch
+    out.append(cur)
+    return [x for x in out if x.strip()]
+
+
 def split_frontmatter(text):
-    if text.startswith("---"):
-        parts = text.split("---", 2)
-        if len(parts) >= 3:
-            try:
-                return (yaml.safe_load(parts[1]) or {}), parts[2].lstrip("\n")
-            except yaml.YAMLError:
-                pass
-    return {}, text
+    """Parse a note's YAML-ish frontmatter without a third-party YAML library.
+
+    Obsidian frontmatter is simple key/value with string scalars and tag/category
+    lists (inline `[a, b]` or block `- item`), which is all we need to read here.
+    """
+    if not text.startswith("---"):
+        return {}, text
+    lines = text.split("\n")
+    end = next((i for i in range(1, len(lines)) if lines[i].strip() == "---"), None)
+    if end is None:
+        return {}, text
+
+    fm, key = {}, None
+    for line in lines[1:end]:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if stripped.startswith("-"):                       # block list item
+            item = stripped[1:].strip()
+            if key is not None and item:
+                fm.setdefault(key, [])
+                if isinstance(fm[key], list):
+                    fm[key].append(_scalar(item))
+            continue
+        if ":" not in line:
+            continue
+        k, _, v = line.partition(":")
+        k, v = k.strip(), v.strip()
+        if v == "":                                        # opens a block list
+            fm[k], key = [], k
+        elif v.startswith("[") and v.endswith("]"):        # inline list
+            inner = v[1:-1].strip()
+            fm[k] = [_scalar(x) for x in _split_inline(inner)] if inner else []
+            key = None
+        else:
+            fm[k] = _scalar(v)
+            key = None
+
+    body = "\n".join(lines[end + 1:]).lstrip("\n")
+    return fm, body
 
 
 def compute_meta(note_path):
@@ -98,13 +159,34 @@ def find_attachment(name):
     return None
 
 
+def _toml_str(s):
+    return '"' + str(s).replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
+def render_toml_frontmatter(fm):
+    """Render Hugo's TOML (`+++`) frontmatter for our fixed set of fields."""
+    lines = [
+        f"title = {_toml_str(fm['title'])}",
+        f"date = {_toml_str(fm['date'])}",
+        f"draft = {'true' if fm['draft'] else 'false'}",
+    ]
+    for k in ("tags", "categories"):
+        if k in fm:
+            vals = fm[k] if isinstance(fm[k], list) else [fm[k]]
+            lines.append(f"{k} = [{', '.join(_toml_str(v) for v in vals)}]")
+    for k in ("description", "summary"):
+        if k in fm:
+            lines.append(f"{k} = {_toml_str(fm[k])}")
+    return "\n".join(lines) + "\n"
+
+
 def process(note_path, wl_sub):
     fm, body = split_frontmatter(note_path.read_text(encoding="utf-8"))
 
     title = fm.get("title") or note_path.stem
     slug  = fm.get("slug") or slugify(title)
     date  = fm.get("date") or datetime.datetime.fromtimestamp(
-        note_path.stat().st_mtime).replace(microsecond=0).isoformat()
+        note_path.stat().st_mtime, TIMEZONE).replace(microsecond=0).isoformat()
 
     bundle = CONTENT_DIR / slug
     bundle.mkdir(parents=True, exist_ok=True)
@@ -136,15 +218,21 @@ def process(note_path, wl_sub):
         if k in fm:
             hugo_fm[k] = fm[k]
 
-    out = ("---\n"
-           + yaml.safe_dump(hugo_fm, sort_keys=False, allow_unicode=True)
-           + "---\n\n" + body.strip() + "\n")
+    out = ("+++\n" + render_toml_frontmatter(hugo_fm)
+           + "+++\n\n" + body.strip() + "\n")
     (bundle / "index.md").write_text(out, encoding="utf-8")
     return title, slug
 
 
 def git(*args):
     subprocess.run(["git", "-C", str(BLOG_REPO), *args], check=True)
+
+
+def has_staged_changes():
+    # `git diff --cached --quiet` exits 1 when there is something staged
+    return subprocess.run(
+        ["git", "-C", str(BLOG_REPO), "diff", "--cached", "--quiet"]
+    ).returncode != 0
 
 
 def main():
@@ -156,7 +244,7 @@ def main():
     slug_map = build_slug_map()                 # know every post's slug up front
     wl_sub   = make_wikilink_sub(slug_map)
 
-    published = []
+    processed = []
     for note in notes:
         # settle: wait until the file size stops changing (avoid half-synced files)
         last = -1
@@ -171,16 +259,23 @@ def main():
         except Exception as e:
             print(f"  ! failed {note.name}: {e}", file=sys.stderr)
             continue
-        published.append(title)
+        processed.append((note, title, slug))
+
+    if not processed:
+        return
+
+    # Commit & push first; only archive notes once the push has landed. A failure
+    # here raises before the move, so the notes stay in Publish/ and get retried.
+    git("add", str(CONTENT_DIR))
+    if has_staged_changes():
+        titles = ", ".join(title for _, title, _ in processed)
+        git("commit", "-m", "Publish: " + titles)
+    git("pull", "--rebase", "origin", GIT_BRANCH)   # avoid non-fast-forward;
+    git("push", "origin", GIT_BRANCH)               # also flushes prior commits
+
+    for note, title, slug in processed:
         shutil.move(str(note), str(PUBLISHED_DIR / note.name))
         print(f"  + {title} -> posts/{slug}")
-
-    if not published:
-        return
-    git("add", "-A")
-    git("commit", "-m", "Publish: " + ", ".join(published))
-    git("pull", "--rebase", "origin", GIT_BRANCH)   # avoid non-fast-forward
-    git("push", "origin", GIT_BRANCH)
 
 
 if __name__ == "__main__":
