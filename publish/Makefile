@@ -1,7 +1,24 @@
+# --- configuration (single source of truth; override on the command line) ----
+#   make install USER=bob VAULT=/srv/vault REPO=/srv/blog
+#
+# USER resolves to the human user even under sudo (via SUDO_USER); VAULT and REPO
+# default to that user's home. These are substituted into publish.py and the
+# systemd units at install time, so the source files stay generic.
+USER  := $(if $(SUDO_USER),$(SUDO_USER),$(USER))
+VAULT ?= /home/$(USER)/vault
+REPO  ?= /home/$(USER)/blog
+
 PREFIX  ?= /opt/blog-publish
 SYSTEMD ?= /etc/systemd/system
 
-.PHONY: install enable disable uninstall deps
+.PHONY: config deps install enable disable uninstall status logs
+
+config:
+	@echo "USER  = $(USER)"
+	@echo "VAULT = $(VAULT)"
+	@echo "REPO  = $(REPO)"
+	@echo "PREFIX  = $(PREFIX)"
+	@echo "SYSTEMD = $(SYSTEMD)"
 
 deps:
 	@python3 -c 'import sys, zoneinfo; assert sys.version_info >= (3, 9)' \
@@ -10,15 +27,21 @@ deps:
 
 install:
 	install -d $(PREFIX)
-	install -m 755 publish.py $(PREFIX)/publish.py
-	install -m 644 blog-publish.service $(SYSTEMD)/blog-publish.service
-	install -m 644 blog-publish.path    $(SYSTEMD)/blog-publish.path
+	sed -e 's|^VAULT_ROOT.*|VAULT_ROOT    = pathlib.Path("$(VAULT)")|' \
+	    -e 's|^BLOG_REPO.*|BLOG_REPO     = pathlib.Path("$(REPO)")|' \
+	    publish.py | install -m 755 /dev/stdin $(PREFIX)/publish.py
+	sed -e 's|^User=.*|User=$(USER)|' \
+	    -e 's|^ExecStart=.*|ExecStart=/usr/bin/python3 $(PREFIX)/publish.py|' \
+	    blog-publish.service | install -m 644 /dev/stdin $(SYSTEMD)/blog-publish.service
+	sed 's|^PathChanged=.*|PathChanged=$(VAULT)/Blog/Publish|' \
+	    blog-publish.path | install -m 644 /dev/stdin $(SYSTEMD)/blog-publish.path
 	systemctl daemon-reload
-	@echo "Installed. Run 'make enable' to start watching."
+	@echo "Installed for user '$(USER)' (vault=$(VAULT), repo=$(REPO))."
+	@echo "Run 'make enable' to start watching."
 
 enable: install
 	systemctl enable --now blog-publish.path
-	@echo "Watching /home/chris/vault/Blog/Publish"
+	@echo "Watching $(VAULT)/Blog/Publish"
 
 disable:
 	systemctl disable --now blog-publish.path || true

@@ -341,6 +341,10 @@ WantedBy=multi-user.target
 write — no polling. The script's settle loop guards against grabbing a file
 mid-sync.
 
+The `User=`, `PathChanged=`, and `ExecStart=` values above are defaults; the
+Makefile (§3) substitutes your `USER`/`VAULT`/`PREFIX` into the installed copies,
+so you don't edit these by hand.
+
 ---
 
 ## 3. Setup steps (on the Pi)
@@ -363,16 +367,20 @@ mid-sync.
    requirement is timezone data for `zoneinfo` — already present on most
    systems, or `sudo apt install tzdata`.
 
-5. **Drop the script** at `/opt/blog-publish/publish.py`, edit the config block,
-   `chmod +x` it.
-
-6. **Install the units:**
+5. **Install via the Makefile** (in `publish/`). It substitutes your user and
+   paths into the script and units at install time — no hand-editing — so the
+   Makefile variables are the single source of truth:
    ```bash
-   sudo systemctl daemon-reload
-   sudo systemctl enable --now blog-publish.path
+   make config                              # preview resolved USER/VAULT/REPO
+   sudo make enable                         # install + start watching
+   # override any default if needed:
+   sudo make enable USER=chris VAULT=/home/chris/vault REPO=/home/chris/blog
    ```
+   `USER` resolves to the human user even under `sudo`; `VAULT`/`REPO` default to
+   that user's home. `make install` stops short of starting the watcher;
+   `make disable` / `make uninstall` reverse it.
 
-7. **Test:** drop a note into `Blog/Publish/` and watch it go:
+6. **Test:** drop a note into `Blog/Publish/` and watch it go:
    ```bash
    journalctl -u blog-publish.service -f
    systemctl status blog-publish.path
