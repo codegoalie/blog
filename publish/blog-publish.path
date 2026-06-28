@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch the Obsidian Blog/Publish folder
+
+[Path]
+PathChanged=/home/chris/vault/Blog/Publish
+Unit=blog-publish.service
+
+[Install]
+WantedBy=multi-user.target
