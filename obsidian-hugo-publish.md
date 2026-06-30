@@ -1,13 +1,13 @@
 # Obsidian → Hugo auto-publish
 
-Drop a note in your vault's `Blog/Publish/` folder from any device. Syncthing
+Drop a note in your vault's `blog/Publish/` folder from any device. Syncthing
 carries it to the always-on box, a systemd `.path` unit notices, and a script
 converts it to a Hugo post and pushes to `main`. Your existing deploy does the
-rest. Published notes are moved to `Blog/Published/` (which syncs back to your
+rest. Published notes are moved to `blog/Published/` (which syncs back to your
 phone as a "done" signal).
 
 ```
-phone ──Syncthing──► Pi: vault/Blog/Publish/ ──.path──► .service ──► publish.py
+phone ──Syncthing──► Pi: vault/blog/Publish/ ──.path──► .service ──► publish.py
                                                                         │
                           git commit + push main ◄── content/posts/<slug>/index.md
                                     │
@@ -22,14 +22,14 @@ Edit the config block at the top for your paths/user.
 
 ```python
 #!/usr/bin/env python3
-"""Publish Obsidian notes from the vault's Blog/Publish folder to a Hugo blog."""
+"""Publish Obsidian notes from the vault's blog/Publish folder to a Hugo blog."""
 import re, sys, time, shutil, subprocess, datetime, pathlib
 from zoneinfo import ZoneInfo
 
 # ---- config ---------------------------------------------------------------
-VAULT_ROOT    = pathlib.Path("/home/chris/vault")
-PUBLISH_DIR   = VAULT_ROOT / "Blog" / "Publish"
-PUBLISHED_DIR = VAULT_ROOT / "Blog" / "Published"
+VAULT_ROOT    = pathlib.Path("/home/chris/Notes")
+PUBLISH_DIR   = VAULT_ROOT / "blog" / "Publish"
+PUBLISHED_DIR = VAULT_ROOT / "blog" / "Published"
 BLOG_REPO     = pathlib.Path("/home/chris/blog")
 CONTENT_DIR   = BLOG_REPO / "content" / "posts"
 GIT_BRANCH    = "main"
@@ -327,10 +327,10 @@ ExecStart=/usr/bin/python3 /opt/blog-publish/publish.py
 
 ```ini
 [Unit]
-Description=Watch the Obsidian Blog/Publish folder
+Description=Watch the Obsidian blog/Publish folder
 
 [Path]
-PathChanged=/home/chris/vault/Blog/Publish
+PathChanged=/home/chris/Notes/blog/Publish
 Unit=blog-publish.service
 
 [Install]
@@ -349,7 +349,7 @@ so you don't edit these by hand.
 
 ## 3. Setup steps (on the Pi)
 
-1. **Folders.** Create `Blog/Publish/` and `Blog/Published/` in the vault so the
+1. **Folders.** Create `blog/Publish/` and `blog/Published/` in the vault so the
    watched path exists and Syncthing has somewhere to land notes.
 
 2. **Clone the blog repo** somewhere on the box (e.g. `/home/chris/blog`) and set
@@ -374,13 +374,13 @@ so you don't edit these by hand.
    make config                              # preview resolved USER/VAULT/REPO
    sudo make enable                         # install + start watching
    # override any default if needed:
-   sudo make enable USER=chris VAULT=/home/chris/vault REPO=/home/chris/blog
+   sudo make enable USER=chris VAULT=/home/chris/Notes REPO=/home/chris/blog
    ```
    `USER` resolves to the human user even under `sudo`; `VAULT`/`REPO` default to
    that user's home. `make install` stops short of starting the watcher;
    `make disable` / `make uninstall` reverse it.
 
-6. **Test:** drop a note into `Blog/Publish/` and watch it go:
+6. **Test:** drop a note into `blog/Publish/` and watch it go:
    ```bash
    journalctl -u blog-publish.service -f
    systemctl status blog-publish.path
@@ -390,7 +390,7 @@ so you don't edit these by hand.
 
 ## Notes & gotchas
 
-- **Marking a post.** A note is published simply by living in `Blog/Publish/`.
+- **Marking a post.** A note is published simply by living in `blog/Publish/`.
   Add YAML frontmatter (`title`, `date`, `tags`, `slug`) to override defaults;
   otherwise title comes from the filename and date from the file's mtime.
 - **Timezone.** Dates derived from a note's mtime are emitted in
@@ -401,8 +401,8 @@ so you don't edit these by hand.
   to `Publish/`; the script overwrites the existing bundle by slug.
 - **Cross-post links.** `[[Other Post]]`, `[[Other Post|alias]]`, and
   `[[Other Post#Heading]]` resolve to `/posts/<slug>/` when the target is a
-  published or same-batch note. The map is built from `Blog/Published/` +
-  `Blog/Publish/`, keyed by note filename (with title as a fallback). Links to
+  published or same-batch note. The map is built from `blog/Published/` +
+  `blog/Publish/`, keyed by note filename (with title as a fallback). Links to
   notes that aren't published fall back to plain text, so nothing breaks. `#`
   anchors assume Hugo's default GitHub-style heading IDs; set `POST_BASE_URL` if
   your permalinks aren't under `/posts/`.
