@@ -1,0 +1,9 @@
+[Unit]
+Description=Publish new Obsidian notes to the Hugo blog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=chris
+ExecStart=/usr/bin/python3 /opt/blog-publish/publish.py
