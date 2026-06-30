@@ -33,7 +33,7 @@ install:
 	sed -e 's|^User=.*|User=$(USER)|' \
 	    -e 's|^ExecStart=.*|ExecStart=/usr/bin/python3 $(PREFIX)/publish.py|' \
 	    blog-publish.service | install -m 644 /dev/stdin $(SYSTEMD)/blog-publish.service
-	sed 's|^PathChanged=.*|PathChanged=$(VAULT)/Blog/Publish|' \
+	sed 's|^PathChanged=.*|PathChanged=$(VAULT)/blog/Publish|' \
 	    blog-publish.path | install -m 644 /dev/stdin $(SYSTEMD)/blog-publish.path
 	systemctl daemon-reload
 	@echo "Installed for user '$(USER)' (vault=$(VAULT), repo=$(REPO))."
@@ -41,7 +41,7 @@ install:
 
 enable: install
 	systemctl enable --now blog-publish.path
-	@echo "Watching $(VAULT)/Blog/Publish"
+	@echo "Watching $(VAULT)/blog/Publish"
 
 disable:
 	systemctl disable --now blog-publish.path || true
