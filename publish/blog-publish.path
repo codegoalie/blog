@@ -2,7 +2,7 @@
 Description=Watch the Obsidian blog/Publish folder
 
 [Path]
-PathChanged=/home/chris/vault/blog/Publish
+PathChanged=/home/chris/Notes/blog/Publish
 Unit=blog-publish.service
 
 [Install]
