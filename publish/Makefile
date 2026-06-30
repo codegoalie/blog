@@ -5,7 +5,7 @@
 # default to that user's home. These are substituted into publish.py and the
 # systemd units at install time, so the source files stay generic.
 USER  := $(if $(SUDO_USER),$(SUDO_USER),$(USER))
-VAULT ?= /home/$(USER)/vault
+VAULT ?= /home/$(USER)/Notes
 REPO  ?= /home/$(USER)/blog
 
 PREFIX  ?= /opt/blog-publish

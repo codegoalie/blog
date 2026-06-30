@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Publish Obsidian notes from the vault's Blog/Publish folder to a Hugo blog."""
+"""Publish Obsidian notes from the vault's blog/Publish folder to a Hugo blog."""
 import re, sys, time, shutil, subprocess, datetime, pathlib
 from zoneinfo import ZoneInfo
 
 # ---- config ---------------------------------------------------------------
-VAULT_ROOT    = pathlib.Path("/home/chris/vault")
-PUBLISH_DIR   = VAULT_ROOT / "Blog" / "Publish"
-PUBLISHED_DIR = VAULT_ROOT / "Blog" / "Published"
+VAULT_ROOT    = pathlib.Path("/home/chris/Notes")
+PUBLISH_DIR   = VAULT_ROOT / "blog" / "Publish"
+PUBLISHED_DIR = VAULT_ROOT / "blog" / "Published"
 BLOG_REPO     = pathlib.Path("/home/chris/blog")
 CONTENT_DIR   = BLOG_REPO / "content" / "posts"
 GIT_BRANCH    = "main"
